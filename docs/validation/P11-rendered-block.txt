@@ -1,0 +1,18 @@
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_WHO_GMP_CERT
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_SCHEDULE_M
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_ISO_9001
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_ISO_14001
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_CDSCO_LICENCE
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_FSSAI
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_IEC_CODE
+.next/server/app/quality.html:1 — Rendered unverified token: TODO_LICENCE_AUTHORITY
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_WHO_GMP_CERT
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_SCHEDULE_M
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_ISO_9001
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_ISO_14001
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_CDSCO_LICENCE
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_FSSAI
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_IEC_CODE
+.next/server/app/quality.rsc:1 — Rendered unverified token: TODO_LICENCE_AUTHORITY
+Compliance guard FAILED (16 findings). No production release is permitted.
+Expected rendered-token check exit status: 1

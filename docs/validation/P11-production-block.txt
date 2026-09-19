@@ -1,0 +1,31 @@
+
+> clinical-paper@0.1.0 prebuild
+> tsx scripts/check-tokens.ts source
+
+/home/user/pharma_website/src/config/brand.ts:40 — Unverified token: TODO_LEGAL_NAME
+/home/user/pharma_website/src/config/brand.ts:45 — Unverified token: TODO_ADDRESS
+/home/user/pharma_website/src/config/brand.ts:49 — Unverified token: TODO_POSTCODE
+/home/user/pharma_website/src/config/brand.ts:52 — Unverified token: TODO_PHONE
+/home/user/pharma_website/src/config/brand.ts:53 — Unverified token: TODO_WHATSAPP
+/home/user/pharma_website/src/config/brand.ts:55 — Unverified token: TODO_SALES_EMAIL
+/home/user/pharma_website/src/config/brand.ts:56 — Unverified token: TODO_REGULATORY_EMAIL
+/home/user/pharma_website/src/config/brand.ts:57 — Unverified token: TODO_GENERAL_EMAIL
+/home/user/pharma_website/src/config/brand.ts:60 — Unverified token: TODO_CDSCO_LICENCE
+/home/user/pharma_website/src/config/brand.ts:61 — Unverified token: TODO_WHO_GMP_CERT
+/home/user/pharma_website/src/config/brand.ts:62 — Unverified token: TODO_ISO_9001
+/home/user/pharma_website/src/config/brand.ts:63 — Unverified token: TODO_ISO_14001
+/home/user/pharma_website/src/config/brand.ts:64 — Unverified token: TODO_ISO_9001
+/home/user/pharma_website/src/config/brand.ts:64 — Unverified token: TODO_ISO_14001
+/home/user/pharma_website/src/config/brand.ts:65 — Unverified token: TODO_SCHEDULE_M
+/home/user/pharma_website/src/config/brand.ts:66 — Unverified token: TODO_FSSAI
+/home/user/pharma_website/src/config/brand.ts:67 — Unverified token: TODO_IEC_CODE
+/home/user/pharma_website/src/config/brand.ts:68 — Unverified token: TODO_GSTIN
+/home/user/pharma_website/src/config/brand.ts:70 — Unresolved VERIFY comment
+/home/user/pharma_website/src/config/brand.ts:78 — Unverified token: TODO_LICENCE_AUTHORITY
+.env / deployment environment:1 — Required production value missing: RESEND_API_KEY
+.env / deployment environment:1 — Required production value missing: ENQUIRY_TO_SALES
+.env / deployment environment:1 — Required production value missing: ENQUIRY_TO_REGULATORY
+.env / deployment environment:1 — Required production value missing: ENQUIRY_FROM
+.env / deployment environment:1 — Required production value missing: NEXT_PUBLIC_SITE_URL
+Compliance guard FAILED (25 findings). No production release is permitted.
+Expected blocked production build exit status: 1

@@ -1,0 +1,54 @@
+
+> clinical-paper@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.25
+   - Experiments (use with caution):
+     · cpus: 2
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 10.8s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/25) ...
+   Generating static pages (6/25) 
+   Generating static pages (12/25) 
+   Generating static pages (18/25) 
+ ✓ Generating static pages (25/25)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    2.84 kB         190 kB
+├ ○ /_not-found                            131 B         103 kB
+├ ● /[legal]                               173 B         107 kB
+├   ├ /privacy
+├   ├ /terms
+├   ├ /quality-policy
+├   └ /modern-slavery-statement
+├ ○ /about                                 553 B         151 kB
+├ ƒ /api/enquiry                           131 B         103 kB
+├ ○ /catalogue                             198 B         202 kB
+├ ○ /contact                               204 B         207 kB
+├ ○ /dev/content                           131 B         103 kB
+├ ○ /dev/kitchen-sink                    2.81 kB         160 kB
+├ ○ /markets                               861 B         151 kB
+├ ○ /products                              176 B         107 kB
+├ ● /products/[category]                 2.82 kB         160 kB
+├   ├ /products/generic-formulations
+├   ├ /products/branded-generics
+├   ├ /products/otc-products
+├   └ [+3 more paths]
+├ ○ /quality                               463 B         163 kB
+├ ○ /services                              554 B         151 kB
+└ ○ /trade-account                         198 B         202 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/493-7733e64000cb1819.js       46.4 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,30 @@
+
+> clinical-paper@0.1.0 prebuild
+> tsx scripts/check-tokens.ts source
+
+/home/user/pharma_website/src/config/brand.ts:10 — Unverified token: TODO_LEGAL_NAME
+/home/user/pharma_website/src/config/brand.ts:11 — Unverified token: TODO_ADDRESS
+/home/user/pharma_website/src/config/brand.ts:11 — Unverified token: TODO_POSTCODE
+/home/user/pharma_website/src/config/brand.ts:12 — Unverified token: TODO_PHONE
+/home/user/pharma_website/src/config/brand.ts:12 — Unverified token: TODO_WHATSAPP
+/home/user/pharma_website/src/config/brand.ts:12 — Unverified token: TODO_SALES_EMAIL
+/home/user/pharma_website/src/config/brand.ts:12 — Unverified token: TODO_REGULATORY_EMAIL
+/home/user/pharma_website/src/config/brand.ts:12 — Unverified token: TODO_GENERAL_EMAIL
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_CDSCO_LICENCE
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_WHO_GMP_CERT
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_ISO_9001
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_ISO_14001
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_SCHEDULE_M
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_FSSAI
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_IEC_CODE
+/home/user/pharma_website/src/config/brand.ts:13 — Unverified token: TODO_GSTIN
+/home/user/pharma_website/src/config/brand.ts:14 — Unresolved VERIFY comment
+/home/user/pharma_website/src/config/brand.ts:16 — Unverified token: TODO_LICENCE_AUTHORITY
+.env / deployment environment:1 — Required production value missing: RESEND_API_KEY
+.env / deployment environment:1 — Required production value missing: ENQUIRY_TO_SALES
+.env / deployment environment:1 — Required production value missing: ENQUIRY_TO_REGULATORY
+.env / deployment environment:1 — Required production value missing: ENQUIRY_FROM
+.env / deployment environment:1 — Required production value missing: NEXT_PUBLIC_SITE_URL
+Compliance guard FAILED (23 findings). No production release is permitted.
+
+Expected failure exit status: 1

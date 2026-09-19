@@ -1,0 +1,7 @@
+PASS Mobile overlay scroll restoration, focus trap and Escape
+PASS Desktop mega navigation arrow keys and focus return
+PASS Contact prefill, blur validation, offline preservation and retry
+PASS Catalogue business-email check and successful confirmation UI
+PASS Trade step validation, refresh persistence, oversized upload and complete review
+PASS Mobile molecule table scroll and overflow cue
+PASS Unknown route gives a real 404

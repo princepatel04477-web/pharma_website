@@ -1,0 +1,261 @@
+import { Resend } from "resend";
+import { createHash } from "node:crypto";
+import {
+  envelopeSchema,
+  MAX_FILE_BYTES,
+  type EnquiryResponse,
+} from "@/lib/enquiry-schema";
+import { formCopy as text, fieldsFor } from "@/content/forms";
+import { brand, isVerified } from "@/config/brand";
+import { allowRequest } from "@/lib/server/rate-limit";
+import { validAttachment } from "@/lib/server/attachments";
+import { countryName } from "@/lib/countries";
+export const runtime = "nodejs";
+const attempts = new Map<
+  string,
+  { hash: string; pending: boolean; expires: number }
+>();
+const escape = (input: string) =>
+  input.replace(
+    /[&<>"']/g,
+    (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        char
+      ] ?? char,
+  );
+const json = (body: EnquiryResponse, status = 200, headers?: HeadersInit) =>
+  Response.json(body, {
+    status,
+    headers: { "Cache-Control": "no-store", ...headers },
+  });
+export async function POST(request: Request) {
+  const origin = request.headers.get("origin");
+  const requestOrigin = new URL(request.url).origin;
+  const allowed = [requestOrigin, brand.siteUrl];
+  const host = request.headers.get("host");
+  let sameHost = false;
+  try {
+    if (origin) {
+      const parsedOrigin = new URL(origin);
+      sameHost =
+        parsedOrigin.host === host &&
+        ["https:", "http:"].includes(parsedOrigin.protocol);
+    }
+  } catch {
+    sameHost = false;
+  }
+  if (origin && !allowed.includes(origin) && !sameHost)
+    return json({ ok: false, message: text.originError }, 403);
+  const ip = process.env.VERCEL
+    ? (request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() ??
+      "unknown")
+    : "local-preview";
+  if (!allowRequest(ip))
+    return json({ ok: false, message: text.rateLimit }, 429, {
+      "Retry-After": "600",
+    });
+  const limit = MAX_FILE_BYTES + 128 * 1024;
+  const contentLength = Number(request.headers.get("content-length") ?? 0);
+  if (contentLength > limit)
+    return json({ ok: false, message: text.tooLarge }, 413);
+  let data: FormData;
+  try {
+    const reader = request.body?.getReader();
+    if (!reader) return json({ ok: false, message: text.invalidRequest }, 400);
+    let size = 0;
+    const chunks: Uint8Array<ArrayBuffer>[] = [];
+    for (;;) {
+      const result = await reader.read();
+      if (result.done) break;
+      size += result.value.length;
+      if (size > limit) {
+        await reader.cancel();
+        return json({ ok: false, message: text.tooLarge }, 413);
+      }
+      chunks.push(new Uint8Array(result.value));
+    }
+    data = await new Response(new Blob(chunks), {
+      headers: { "Content-Type": request.headers.get("content-type") ?? "" },
+    }).formData();
+  } catch {
+    return json({ ok: false, message: text.invalidRequest }, 400);
+  }
+  const payload = data.get("payload");
+  let input: unknown;
+  try {
+    input = JSON.parse(typeof payload === "string" ? payload : "");
+  } catch {
+    return json({ ok: false, message: text.invalidRequest }, 400);
+  }
+  const parsed = envelopeSchema.safeParse(input);
+  if (!parsed.success) {
+    const errors: Record<string, string> = {};
+    for (const issue of parsed.error.issues) {
+      const key = String(
+        issue.path[0] === "data" ? issue.path[1] : issue.path[0],
+      );
+      errors[key] = issue.message;
+    }
+    return json({ ok: false, message: text.invalid, errors }, 400);
+  }
+  const { data: enquiry, startedAt, honeypot, requestId } = parsed.data;
+  if (
+    honeypot ||
+    Date.now() - startedAt < 3000 ||
+    startedAt > Date.now() ||
+    Date.now() - startedAt > 86400000
+  )
+    return json({ ok: false, message: text.tooFast }, 400);
+  const attachment = data.get("attachment");
+  if (enquiry.type !== "trade" && attachment)
+    return json({ ok: false, message: text.invalidRequest }, 400);
+  if (enquiry.type === "trade" && !(attachment instanceof File))
+    return json(
+      {
+        ok: false,
+        message: text.uploadRequired,
+        errors: { attachment: text.uploadRequired },
+      },
+      400,
+    );
+  if (attachment instanceof File && !(await validAttachment(attachment)))
+    return json(
+      {
+        ok: false,
+        message: text.fileInvalid,
+        errors: { attachment: text.uploadError },
+      },
+      400,
+    );
+  const fallback = isVerified(brand.email.general)
+    ? brand.email.general
+    : undefined;
+  const apiKey = process.env.RESEND_API_KEY,
+    from = process.env.ENQUIRY_FROM,
+    sales = process.env.ENQUIRY_TO_SALES,
+    regulatory = process.env.ENQUIRY_TO_REGULATORY;
+  if (!apiKey || !from || !sales || !regulatory)
+    return json(
+      { ok: false, message: text.unavailable, fallbackEmail: fallback },
+      503,
+    );
+  const fileBytes =
+    attachment instanceof File
+      ? Buffer.from(await attachment.arrayBuffer())
+      : undefined;
+  const hash = createHash("sha256")
+    .update(JSON.stringify(enquiry))
+    .update(fileBytes ?? "")
+    .digest("hex");
+  const now = Date.now();
+  for (const [id, record] of attempts)
+    if (record.expires < now) attempts.delete(id);
+  const existing = attempts.get(requestId);
+  if (existing) {
+    if (existing.hash !== hash)
+      return json({ ok: false, message: text.invalidRequest }, 409);
+    if (existing.pending)
+      return json({ ok: false, message: text.duplicate }, 409);
+    return json({
+      ok: true,
+      message: text.successDetail,
+      reference: requestId,
+    });
+  }
+  if (attempts.size >= 10000)
+    return json({ ok: false, message: text.rateLimit }, 429);
+  attempts.set(requestId, { hash, pending: true, expires: now + 86400000 });
+  const labels = new Map(
+    fieldsFor(enquiry.type).map((field) => [field.name as string, field.label]),
+  );
+  const entries = Object.entries(enquiry)
+    .filter(([key]) => key !== "type" && key !== "consent")
+    .map(
+      ([key, value]) =>
+        [
+          labels.get(key) ?? key,
+          key === "country"
+            ? countryName(String(value))
+            : Array.isArray(value)
+              ? value.join(", ")
+              : String(value),
+        ] as const,
+    );
+  const table = `<table>${entries.map(([key, value]) => `<tr><th align="left">${escape(key)}</th><td>${escape(value)}</td></tr>`).join("")}</table>`;
+  const resend = new Resend(apiKey);
+  try {
+    const internal = await resend.emails.send(
+      {
+        from,
+        to: enquiry.type === "trade" ? regulatory : sales,
+        replyTo: enquiry.email,
+        subject:
+          `${enquiry.type} | ${enquiry.country} | ${enquiry.company}`.replace(
+            /[\r\n]/g,
+            " ",
+          ),
+        html: `<h1>${escape(brand.tradingName)} — ${escape(enquiry.type)}</h1>${table}<p>${escape(requestId)}</p>`,
+        ...(fileBytes
+          ? {
+              attachments: [
+                {
+                  filename:
+                    attachment instanceof File
+                      ? attachment.name
+                          .replace(/[^a-zA-Z0-9._-]/g, "_")
+                          .slice(0, 120)
+                      : "licence-document",
+                  content: fileBytes,
+                },
+              ],
+            }
+          : {}),
+      },
+      { idempotencyKey: `enquiry/${requestId}/internal` },
+    );
+    if (internal.error) {
+      console.error(
+        "Enquiry notification delivery failed",
+        internal.error.name,
+      );
+      attempts.delete(requestId);
+      return json(
+        { ok: false, message: text.failure, fallbackEmail: fallback },
+        502,
+      );
+    }
+    attempts.set(requestId, { hash, pending: false, expires: now + 86400000 });
+    try {
+      const acknowledgement = await resend.emails.send(
+        {
+          from,
+          to: enquiry.email,
+          subject: `${brand.tradingName} — enquiry received`,
+          text: `${text.successDetail}\n\n${entries.map(([key, value]) => `${key}: ${value}`).join("\n")}\n\n${text.reference}: ${requestId}\n\n${enquiry.type === "catalogue" ? text.catalogueSuccess : ""}`,
+        },
+        { idempotencyKey: `enquiry/${requestId}/acknowledgement` },
+      );
+      if (acknowledgement.error)
+        console.warn(
+          "Acknowledgement failed after accepted notification",
+          acknowledgement.error.name,
+        );
+    } catch {
+      console.warn(
+        "Acknowledgement transport failed after accepted notification",
+      );
+    }
+    return json({
+      ok: true,
+      message: text.successDetail,
+      reference: requestId,
+    });
+  } catch {
+    attempts.delete(requestId);
+    console.error("Enquiry email transport unavailable");
+    return json(
+      { ok: false, message: text.failure, fallbackEmail: fallback },
+      502,
+    );
+  }
+}

@@ -1,0 +1,37 @@
+"use client";
+import { useEffect, useState } from "react";
+export function RegionNav({
+  items,
+}: {
+  items: { slug: string; region: string }[];
+}) {
+  const [active, setActive] = useState(items[0]?.slug);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries)
+          if (entry.isIntersecting) setActive(entry.target.id);
+      },
+      { rootMargin: "-20% 0px -50% 0px" },
+    );
+    for (const item of items) {
+      const el = document.getElementById(item.slug);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, [items]);
+  return (
+    <nav className="region-nav" aria-label="Regional sections">
+      {items.map((item) => (
+        <a
+          key={item.slug}
+          className={active === item.slug ? "active" : ""}
+          aria-current={active === item.slug ? "location" : undefined}
+          href={`#${item.slug}`}
+        >
+          {item.region}
+        </a>
+      ))}
+    </nav>
+  );
+}

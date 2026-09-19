@@ -1,0 +1,33 @@
+
+> clinical-paper@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.25
+   - Experiments (use with caution):
+     · cpus: 2
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 12.1s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/6) ...
+   Generating static pages (1/6) 
+   Generating static pages (2/6) 
+   Generating static pages (4/6) 
+ ✓ Generating static pages (6/6)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    30.6 kB         187 kB
+├ ○ /_not-found                            997 B         104 kB
+├ ○ /dev/content                           123 B         103 kB
+└ ○ /dev/kitchen-sink                    2.79 kB         155 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/493-7733e64000cb1819.js       46.4 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+○  (Static)  prerendered as static content
+

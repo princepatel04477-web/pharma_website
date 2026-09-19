@@ -1,0 +1,181 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
+import {
+  contactSchema,
+  catalogueSchema,
+  tradeSchema,
+  MAX_FILE_BYTES,
+} from "../src/lib/enquiry-schema";
+import { validAttachment } from "../src/lib/server/attachments";
+import { allowRequest } from "../src/lib/server/rate-limit";
+import { POST } from "../src/app/api/enquiry/route";
+const sample = {
+  name: "Test contact",
+  company: "Test fixture company",
+  email: "fixture@example.org",
+  phone: "+919000000000",
+  country: "IN",
+  consent: true,
+};
+const contact = {
+  ...sample,
+  type: "contact",
+  message: "Synthetic integration test only.",
+  category: "generic-formulations",
+};
+function request(data: unknown, extras: Record<string, unknown> = {}) {
+  const body = new FormData();
+  body.set(
+    "payload",
+    JSON.stringify({
+      data,
+      requestId: randomUUID(),
+      startedAt: Date.now() - 5000,
+      honeypot: "",
+      ...extras,
+    }),
+  );
+  return new Request("http://localhost:3000/api/enquiry", {
+    method: "POST",
+    headers: {
+      origin: "http://localhost:3000",
+      "x-vercel-forwarded-for": randomUUID(),
+    },
+    body,
+  });
+}
+test("shared validation rejects bad email, invalid country, short message and free mail catalogue", () => {
+  assert.equal(contactSchema.safeParse(contact).success, true);
+  assert.equal(
+    contactSchema.safeParse({
+      ...contact,
+      email: "bad",
+      country: "XX",
+      message: "x",
+    }).success,
+    false,
+  );
+  assert.equal(
+    catalogueSchema.safeParse({
+      ...sample,
+      type: "catalogue",
+      email: "fixture@gmail.com",
+      businessType: "Importer",
+      licenceHeld: "Yes",
+      categories: ["generic-formulations"],
+    }).success,
+    false,
+  );
+  assert.equal(
+    tradeSchema.safeParse({ ...sample, type: "trade" }).success,
+    false,
+  );
+});
+test("attachment limit, mime and signatures are verified", async () => {
+  assert.equal(
+    await validAttachment(
+      new File(["%PDF-1.7\nfixture"], "fixture.pdf", {
+        type: "application/pdf",
+      }),
+    ),
+    true,
+  );
+  assert.equal(
+    await validAttachment(
+      new File(["not a pdf"], "fixture.pdf", { type: "application/pdf" }),
+    ),
+    false,
+  );
+  assert.equal(
+    await validAttachment(
+      new File([new Uint8Array(MAX_FILE_BYTES + 1)], "large.pdf", {
+        type: "application/pdf",
+      }),
+    ),
+    false,
+  );
+  assert.equal(
+    await validAttachment(
+      new File(["script"], "fixture.html", { type: "text/html" }),
+    ),
+    false,
+  );
+});
+test("rate limiter allows five requests and expires window", () => {
+  const key = randomUUID();
+  for (let i = 0; i < 5; i++) assert.equal(allowRequest(key, 1000), true);
+  assert.equal(allowRequest(key, 1000), false);
+  assert.equal(allowRequest(key, 601001), true);
+});
+test("API rejects invalid, cross-origin, rapid and honeypot requests", async () => {
+  process.env.VERCEL = "1";
+  assert.equal((await POST(request({ ...contact, email: "bad" }))).status, 400);
+  assert.equal(
+    (await POST(request(contact, { startedAt: Date.now() }))).status,
+    400,
+  );
+  assert.equal(
+    (await POST(request(contact, { honeypot: "spam" }))).status,
+    400,
+  );
+  assert.equal(
+    (
+      await POST(
+        new Request("http://localhost:3000/api/enquiry", {
+          method: "POST",
+          headers: { origin: "https://external.invalid" },
+          body: "x",
+        }),
+      )
+    ).status,
+    403,
+  );
+});
+test("API reports unavailable instead of false success without credentials", async () => {
+  delete process.env.RESEND_API_KEY;
+  assert.equal((await POST(request(contact))).status, 503);
+});
+test("API handles provider failure and idempotent accepted submissions", async () => {
+  process.env.RESEND_API_KEY = "re_fixture_not_real";
+  process.env.ENQUIRY_FROM = "fixture@example.org";
+  process.env.ENQUIRY_TO_SALES = "fixture@example.org";
+  process.env.ENQUIRY_TO_REGULATORY = "fixture@example.org";
+  const original = globalThis.fetch;
+  try {
+    globalThis.fetch = async () =>
+      Response.json(
+        { name: "application_error", message: "synthetic failure" },
+        { status: 500 },
+      );
+    assert.equal((await POST(request(contact))).status, 502);
+    let sends = 0;
+    globalThis.fetch = async () => {
+      sends++;
+      return Response.json({ id: randomUUID() });
+    };
+    const id = randomUUID();
+    assert.equal((await POST(request(contact, { requestId: id }))).status, 200);
+    assert.equal(sends, 2);
+    assert.equal((await POST(request(contact, { requestId: id }))).status, 200);
+    assert.equal(sends, 2);
+    assert.equal(
+      (
+        await POST(
+          request(
+            { ...contact, message: "A different synthetic request" },
+            { requestId: id },
+          ),
+        )
+      ).status,
+      409,
+    );
+  } finally {
+    globalThis.fetch = original;
+    delete process.env.RESEND_API_KEY;
+    delete process.env.ENQUIRY_FROM;
+    delete process.env.ENQUIRY_TO_SALES;
+    delete process.env.ENQUIRY_TO_REGULATORY;
+    delete process.env.VERCEL;
+  }
+});

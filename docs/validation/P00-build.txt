@@ -1,0 +1,31 @@
+
+> clinical-paper@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   ▲ Next.js 15.5.25
+   - Experiments (use with caution):
+     · cpus: 2
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.6s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/2) ...
+ ✓ Generating static pages (2/2)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                                Size  First Load JS
+─ ○ /404                                    180 B        96.5 kB
++ First Load JS shared by all             96.3 kB
+  ├ chunks/framework-acd67e14855de5a2.js  57.7 kB
+  ├ chunks/main-75f2fe0664da2ae6.js         37 kB
+  └ other shared chunks (total)           1.66 kB
+
+○  (Static)  prerendered as static content
+
