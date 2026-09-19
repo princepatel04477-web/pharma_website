@@ -10,6 +10,7 @@
     "test": "tsx --test tests/*.test.ts",
     "prebuild": "tsx scripts/check-tokens.ts source",
     "postbuild": "tsx scripts/check-tokens.ts rendered",
+    "deploy:pages": "tsx scripts/deploy-pages.ts",
     "check:release": "tsx scripts/check-tokens.ts source --release && tsx scripts/check-tokens.ts rendered --release"
   },
   "dependencies": {

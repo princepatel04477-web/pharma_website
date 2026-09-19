@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   experimental: { cpus: 2 },
   allowedDevOrigins: ["*.e2b.app"],
   devIndicators: false,
+  output:
+    process.env.NEXT_EXPORT === "true" || process.env.CF_PAGES === "1"
+      ? "export"
+      : undefined,
   distDir: development ? ".next-dev" : ".next",
   images: { remotePatterns: [] },
   async headers() {
