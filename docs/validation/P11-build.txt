@@ -1,0 +1,71 @@
+
+> clinical-paper@0.1.0 prebuild
+> tsx scripts/check-tokens.ts source
+
+Compliance guard: source passed (non-launch preview; declared tokens permitted).
+
+> clinical-paper@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.25
+   - Experiments (use with caution):
+     · cpus: 2
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 5.5s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/46) ...
+   Generating static pages (11/46)
+   Generating static pages (22/46)
+   Generating static pages (34/46)
+ ✓ Generating static pages (46/46)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    3.55 kB         112 kB
+├ ○ /_not-found                            140 B         103 kB
+├ ● /[legal]                               173 B         107 kB
+├   ├ /privacy
+├   ├ /terms
+├   ├ /quality-policy
+├   └ /modern-slavery-statement
+├ ○ /about                                 761 B         108 kB
+├ ƒ /api/enquiry                           140 B         103 kB
+├ ○ /catalogue                             188 B         147 kB
+├ ○ /contact                               194 B         148 kB
+├ ○ /dev/content                           140 B         103 kB
+├ ○ /dev/kitchen-sink                    2.93 kB         151 kB
+├ ○ /markets                             1.01 kB         108 kB
+├ ● /og/[slug]                             140 B         103 kB
+├   ├ /og/home
+├   ├ /og/about
+├   ├ /og/products
+├   └ [+16 more paths]
+├ ○ /products                              176 B         107 kB
+├ ● /products/[category]                 3.32 kB         110 kB
+├   ├ /products/generic-formulations
+├   ├ /products/branded-generics
+├   ├ /products/otc-products
+├   └ [+3 more paths]
+├ ○ /quality                               575 B         154 kB
+├ ○ /robots.txt                            140 B         103 kB
+├ ○ /services                              762 B         108 kB
+├ ○ /sitemap.xml                           140 B         103 kB
+└ ○ /trade-account                         188 B         147 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/493-7733e64000cb1819.js       46.4 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+
+> clinical-paper@0.1.0 postbuild
+> tsx scripts/check-tokens.ts rendered
+
+Compliance guard: rendered output passed (non-launch preview; declared tokens permitted).

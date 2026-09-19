@@ -1,41 +1,383 @@
-import { z } from 'zod';
-const copySchema = z.record(z.string(),z.string());
-export const copy={
-  preview:'Design preview · Not a verified offer of supply',
-  eyebrow:'Pharmaceutical export & wholesale',
-  heroTitle:'Considered sourcing.\nClearer pathways.',
-  heroDescription:'A pharmaceutical sourcing platform for importers, distributors and institutional buyers. Explore six product lines and start with your market’s requirements.',
-  location:'Surat, Gujarat · India',
-  trade:'Open trade account',catalogue:'Explore the catalogue',rxNotice:'Import licence required for Rx categories.',
-  profile:'Portfolio at a glance',profileRef:'Sourcing brief / 01',profileNote:'An organised starting point for your next enquiry.',
-  categoriesLabel:'Product lines',regionsLabel:'Regional enquiry groups',modelLabel:'Business model',modelValue:'B2B wholesale & export',documentationLabel:'Documentation',documentationValue:'Product & market specific',credentialsLabel:'Credential status',credentialsValue:'Awaiting verification',revision:'Catalogue revision pending verification',
-  compliance:'Due diligence',trustNote:'Documentation to verify, not certifications claimed',
-  positioningLabel:'01 — A considered approach',positioningTitle:'Less complexity.\nMore clarity.',positioning1:'Sourcing pharmaceutical products is about more than finding a formulation. It means aligning the product, the manufacturer, the paperwork and the destination.',positioning2:'This platform brings those conversations into one place. Built for import licence holders, pharmaceutical distributors and institutional procurement teams—not direct-to-consumer purchases.',positioning3:'Start with a product list. Define the documentation. Establish a clear, evidence-led route to the next decision.',aboutLink:'Our approach to sourcing',
-  productsLabel:'02 — Product lines',productsTitle:'Six lines.\nOne considered portfolio.',productsDescription:'From finished formulations to everyday healthcare. Explore the category that fits your procurement brief.',allProducts:'View all product lines',licence:'Licence required',enquiryOnly:'Availability on enquiry',formLabel:'formats',categoryLabel:'Category',
-  servicesLabel:'03 — Supply chain capability',servicesTitle:'Beyond the product.\nInto the details.',servicesDescription:'A structured discussion of everything between the sourcing brief and a documented shipment.',servicesLink:'Explore our services',deliverables:'Scope for discussion',
-  marketsLabel:'04 — Markets for enquiry',marketsTitle:'Different markets.\nA shared discipline.',marketsDescription:'Every destination brings its own requirements. Start with the local registration pathway, then build the sourcing brief around it.',marketsLink:'Explore regional requirements',region:'Region',countries:'Countries',support:'Documentation planning',marketsNote:'Listed destinations indicate enquiry scope, not shipment history.',
-  processLabel:'05 — How an order runs',processTitle:'A clear next step.\nAt every stage.',
-  faqLabel:'06 — Common questions',faqTitle:'Before we begin.',faqLink:'More questions? Get in touch',
-  closingLabel:'Start a conversation',closingTitle:'Your next sourcing brief\nstarts here.',closingDescription:'Tell us what you need, where it needs to go, and the documentation your market requires. A better enquiry begins with the right details.',
-  productsIntro:'An indicative portfolio for professional procurement. Product availability, specifications and destination eligibility require confirmation for every enquiry.',
-  indicative:'Indicative examples only. Not a verified stock list or offer of supply.',molecule:'Molecule',strengths:'Strengths',forms:'Dosage forms',supply:'What to discuss',representative:'Representative molecules',packaging:'Packaging & specification',documentation:'Documentation checklist',related:'Related capability',previous:'Previous category',next:'Next category',categoryEnquiry:'Discuss this category',categoryEnquiryNote:'Share your required products, quantities and destination so the next conversation starts with the right context.',nonMolecule:'This category is specified by product type, not a medicine molecule list. Include the intended use, presentation and required technical evidence in your enquiry.',
-  qualityTitle:'Evidence first.\nConfidence follows.',qualityIntro:'A procurement decision needs verifiable documents, not decorative badges. This preview separates the evidence to request from the credentials still awaiting confirmation.',disclaimer:"we do not represent that any product is registered in a destination market; registration is supported, market-specific, and the importer's responsibility.",credentials:'Credential register',pending:'Verification pending',licenceTitle:'Wholesale authorisation',licenceDescription:'Original document required for verification',authority:'Issuing authority',validity:'Validity',unconfirmed:'Not yet confirmed',qualitySystem:'A framework for quality review',documentPack:'The documentation pack',facilityStandards:'What to verify at the facility',recallTitle:'A clear route for complaints and recalls',recallDescription:'For any actual product issue, use the supplier and emergency contacts on the original product documentation. This non-launch preview has no operational pharmacovigilance or recall contact. A verified reporting route and approved recall procedure are required before trading.',
-  marketsPageTitle:'Start with the destination.',marketsPageIntro:'Registration, labelling and import requirements are market-specific. These regional groups organise an enquiry—not a claim that a product can be supplied there.',registrationTitle:'Support is not authorisation.',registrationText:'The dossier brief can identify manufacturer information, artwork, samples and stability data needed for local filing. The importer must confirm local representation, submit the application and obtain the necessary approvals and permits.',
-  aboutTitle:'A disciplined approach\nto pharmaceutical sourcing.',aboutIntro:'A Surat-based working concept for business-to-business pharmaceutical wholesale and export. The brand, operating history and credentials remain subject to verification before launch.',operatingTitle:'Good sourcing starts\nwith better questions.',operating1:'The proposed model connects a defined product requirement with a qualified manufacturing source. Facility selection must be supported by current evidence rather than assumed from a catalogue.',operating2:'Documentation is part of the product brief, not an administrative step added at dispatch. Align specifications, batch evidence, packaging and destination requirements early.',operating3:'Professional buyers need transparent limitations as much as a broad portfolio. This preview makes the unknowns visible so they can be resolved before a commercial commitment.',historyTitle:'Milestones must be evidenced.',historyNote:'Founding date and operating milestones have not been supplied. No trading history is asserted in this preview.',leadershipTitle:'Accountability, before introductions.',leadershipNote:'Leadership names and remits are awaiting company verification. No individuals are represented as officers or employees here.',suratTitle:'A Gujarat starting point.',
-  servicesPageTitle:'The work around\nthe product matters.',servicesPageIntro:'Six areas to define in a sourcing engagement. Actual service availability, responsibilities and evidence must be confirmed in writing.',engagementTitle:'Choose the right engagement.',
-  catalogueTitle:'A more useful\nproduct conversation.',catalogueIntro:'Request an organised view of the proposed portfolio. The final catalogue is awaiting verification; no downloadable stock list is represented as current.',catalogueForm:'Request the catalogue',catalogueContents:'What the catalogue brief covers',cataloguePricing:'Pricing is quoted separately against an enquiry. No prices are published on this site.',catalogueUnavailable:'The verified catalogue PDF is not yet available. Use the request form to record your requirements when email delivery has been configured.',
-  tradeTitle:'Let’s establish\nthe right foundations.',tradeIntro:'Tell us about your company, regulatory position and procurement needs. This preview lets you prepare an application; it does not create an approved trading account.',
-  contactTitle:'Start with your\nrequirements.',contactIntro:'A specific product list, destination and quantity helps frame the right conversation. For regulatory questions, include the applicable document requirements.',contactForm:'Send an enquiry',addressTitle:'Headquarters',addressNote:'The full registered address and direct contact channels await verification.',contactPending:'Direct contact details awaiting verification',
-  legalPreview:'Preview notice — not an approved company policy',legalNotice:'This is a non-launch design preview. The legal entity, registered address, operating practices and approved company policies have not been supplied. This notice explains the current preview only and must be replaced with reviewed, entity-specific documentation before launch.',
-  notFoundTitle:'This page is not in the portfolio.',notFoundDescription:'The address may have changed. Explore the product lines or return to the homepage.',home:'Return home',
-} satisfies Record<string,string>;
-copySchema.parse(copy);
-export const trustItems=['WHO-GMP evidence','Schedule M scope','ISO certification','Wholesale authorisation','FSSAI scope','IEC registration'];
-export const orderSteps=[{name:'Enquiry & product list',detail:'Define the product, presentation, quantity and destination.'},{name:'Quotation & pro-forma',detail:'Agree availability, scope, trade terms and commercial documents.'},{name:'Account & licence review',detail:'Verify business identity, import permissions and responsibilities.'},{name:'Allocation & batch review',detail:'Confirm the source, specification and quality documentation.'},{name:'Documents & dispatch',detail:'Complete the agreed shipment file and handover arrangements.'}];
-export const qualityPillars=[{name:'Supplier qualification',detail:'Request current site credentials and confirm the permitted manufacturing scope. Define audit and approval responsibilities before selection.'},{name:'Incoming material controls',detail:'Review how the manufacturing facility identifies and releases incoming materials. Evidence should match the relevant product and process.'},{name:'In-process controls',detail:'Confirm the documented controls at the responsible manufacturing site. Do not infer process compliance from a product description.'},{name:'Finished-product review',detail:'Match the batch CoA to the approved specification. Clarify who is authorised to release the batch.'},{name:'Stability & shelf life',detail:'Review available stability information against the formulation and pack. Agree remaining shelf-life requirements before dispatch.'},{name:'Traceability & retention',detail:'Establish the batch-to-shipment record and retention-sample responsibilities. Make the recall handover clear before supply.'}];
-export const facilityStandards=[{name:'Controlled areas',detail:'Area classification and access-control evidence.'},{name:'HVAC systems',detail:'Qualification records appropriate to the process.'},{name:'Water systems',detail:'Defined specifications, monitoring and qualification.'},{name:'QC laboratory',detail:'Testing scope, methods and responsible personnel.'},{name:'Storage conditions',detail:'Temperature mapping and excursion procedures.'},{name:'Documentation practices',detail:'Current procedures, controlled records and traceability.'}];
-export const documentPack=['Batch Certificate of Analysis','Applicable GMP certificate','Free Sale Certificate, where applicable','MSDS, where applicable','Packing list','Commercial invoice','Certificate of origin','Shipping documents','Stability summary, where available'];
-export const engagementModels=[{name:'Spot purchase',fit:'A defined product list and a single procurement requirement.',moq:'MOQ: confirm per product',lead:'Lead time: confirm availability',scope:'Order-specific documentation review'},{name:'Annual contract',fit:'Recurring demand with an agreed forecast and review process.',moq:'Volume: agree against forecast',lead:'Schedule: confirm in contract',scope:'Ongoing specification and document control'},{name:'Private label',fit:'A destination-specific product and packaging brief.',moq:'MOQ: manufacturing assessment',lead:'Schedule: after artwork review',scope:'Brand, facility and regulatory scope review'}];
-export const suratPoints=[{name:'Manufacturing context',detail:'Gujarat is a location to consider when evaluating Indian pharmaceutical manufacturing sources. Individual facility capability must still be verified.'},{name:'Port planning',detail:'Hazira, Mundra and JNPT can be considered during freight planning. The appropriate port depends on the shipment, carrier and destination.'},{name:'Landed-cost discipline',detail:'Compare the complete cost of product, documentation, freight, insurance and local clearance. A sourcing location alone does not establish a cost advantage.'}];
-export const contactChannels=[{name:'Sales enquiries',key:'sales' as const,detail:'Product lists, quantities, catalogue and trade-account questions.'},{name:'Regulatory & documentation',key:'regulatory' as const,detail:'Licence checks, dossier requirements and shipment documentation.'},{name:'General enquiries',key:'general' as const,detail:'Company information and questions outside a specific product brief.'}];
-export const legalPages=[{slug:'privacy',name:'Privacy notice',sections:[{name:'Current preview behaviour',text:'The trade-account form can save text fields in this browser’s session storage. Uploaded files are not persisted. Clear the draft using the form control or close the browser session.'},{name:'Submission handling',text:'When email delivery is configured, submitted enquiry data is sent to the configured business inbox and an acknowledgement to the supplied email. Do not submit real licence copies or sensitive personal information to this design preview.'},{name:'Before launch',text:'The controller identity, legal basis, retention periods, processor agreements, rights contact and applicable transfer safeguards require review and publication.'}]},{slug:'terms',name:'Terms of use',sections:[{name:'No commercial offer',text:'This preview is not an offer of supply, a quotation, a trading approval or a statement of product availability. Indicative product examples must not be relied on for procurement.'},{name:'Professional use',text:'The proposed service is for business procurement. No medical advice, consumer sale or product efficacy claim is provided.'},{name:'Before launch',text:'The legal entity, governing law, contracting process, liability terms and dispute provisions require approval before commercial use.'}]},{slug:'quality-policy',name:'Quality policy notice',sections:[{name:'Policy approval pending',text:'The quality page describes a framework for document review. It is not a signed quality policy or evidence that the company holds any certification.'},{name:'Required company evidence',text:'A responsible officer must approve the quality policy, supplier qualification procedures, document controls and batch-release responsibilities before launch.'}]},{slug:'modern-slavery-statement',name:'Modern slavery statement notice',sections:[{name:'No approved statement supplied',text:'This preview does not claim that a supply-chain due-diligence programme or reporting process has been implemented.'},{name:'Before publication',text:'The company must establish the applicable reporting obligations, responsible entity, supply-chain scope, assessment procedures and approval date before publishing a substantive statement.'}]}];
+export const copy = {
+  preview: "Design preview · Not a verified offer of supply",
+  eyebrow: "Pharmaceutical export & wholesale",
+  heroTitle: "Considered sourcing.\nClearer pathways.",
+  heroDescription:
+    "A pharmaceutical sourcing platform for importers, distributors and institutional buyers. Explore six product lines and start with your market’s requirements.",
+  location: "Surat, Gujarat · India",
+  trade: "Open trade account",
+  catalogue: "Explore the catalogue",
+  rxNotice: "Import licence required for Rx categories.",
+  profile: "Portfolio at a glance",
+  profileRef: "Sourcing brief / 01",
+  profileNote: "An organised starting point for your next enquiry.",
+  categoriesLabel: "Product lines",
+  regionsLabel: "Regional enquiry groups",
+  modelLabel: "Business model",
+  modelValue: "B2B wholesale & export",
+  documentationLabel: "Documentation",
+  documentationValue: "Product & market specific",
+  credentialsLabel: "Credential status",
+  credentialsValue: "Awaiting verification",
+  revision: "Catalogue revision pending verification",
+  compliance: "Due diligence",
+  trustNote: "Documentation to verify, not certifications claimed",
+  positioningLabel: "01 — A considered approach",
+  positioningTitle: "Less complexity.\nMore clarity.",
+  positioning1:
+    "Sourcing pharmaceutical products is about more than finding a formulation. It means aligning the product, the manufacturer, the paperwork and the destination.",
+  positioning2:
+    "This platform brings those conversations into one place. Built for import licence holders, pharmaceutical distributors and institutional procurement teams—not direct-to-consumer purchases.",
+  positioning3:
+    "Start with a product list. Define the documentation. Establish a clear, evidence-led route to the next decision.",
+  aboutLink: "Our approach to sourcing",
+  productsLabel: "02 — Product lines",
+  productsTitle: "Six lines.\nOne considered portfolio.",
+  productsDescription:
+    "From finished formulations to everyday healthcare. Explore the category that fits your procurement brief.",
+  allProducts: "View all product lines",
+  licence: "Licence required",
+  enquiryOnly: "Availability on enquiry",
+  formLabel: "formats",
+  categoryLabel: "Category",
+  servicesLabel: "03 — Supply chain capability",
+  servicesTitle: "Beyond the product.\nInto the details.",
+  servicesDescription:
+    "A structured discussion of everything between the sourcing brief and a documented shipment.",
+  servicesLink: "Explore our services",
+  deliverables: "Scope for discussion",
+  marketsLabel: "04 — Markets for enquiry",
+  marketsTitle: "Different markets.\nA shared discipline.",
+  marketsDescription:
+    "Every destination brings its own requirements. Start with the local registration pathway, then build the sourcing brief around it.",
+  marketsLink: "Explore regional requirements",
+  region: "Region",
+  countries: "Countries",
+  support: "Documentation planning",
+  marketsNote:
+    "Listed destinations indicate enquiry scope, not shipment history.",
+  processLabel: "05 — How an order runs",
+  processTitle: "A clear next step.\nAt every stage.",
+  faqLabel: "06 — Common questions",
+  faqTitle: "Before we begin.",
+  faqLink: "More questions? Get in touch",
+  closingLabel: "Start a conversation",
+  closingTitle: "Your next sourcing brief\nstarts here.",
+  closingDescription:
+    "Tell us what you need, where it needs to go, and the documentation your market requires. A better enquiry begins with the right details.",
+  productsIntro:
+    "An indicative portfolio for professional procurement. Product availability, specifications and destination eligibility require confirmation for every enquiry.",
+  indicative:
+    "Indicative examples only. Not a verified stock list or offer of supply.",
+  molecule: "Molecule",
+  strengths: "Strengths",
+  forms: "Dosage forms",
+  supply: "What to discuss",
+  representative: "Representative molecules",
+  packaging: "Packaging & specification",
+  documentation: "Documentation checklist",
+  related: "Related capability",
+  previous: "Previous category",
+  next: "Next category",
+  categoryEnquiry: "Discuss this category",
+  categoryEnquiryNote:
+    "Share your required products, quantities and destination so the next conversation starts with the right context.",
+  nonMolecule:
+    "This category is specified by product type, not a medicine molecule list. Include the intended use, presentation and required technical evidence in your enquiry.",
+  qualityTitle: "Evidence first.\nConfidence follows.",
+  qualityIntro:
+    "A procurement decision needs verifiable documents, not decorative badges. This preview separates the evidence to request from the credentials still awaiting confirmation.",
+  disclaimer:
+    "we do not represent that any product is registered in a destination market; registration is supported, market-specific, and the importer's responsibility.",
+  credentials: "Credential register",
+  pending: "Verification pending",
+  licenceTitle: "Wholesale authorisation",
+  licenceDescription: "Original document required for verification",
+  authority: "Issuing authority",
+  validity: "Validity",
+  unconfirmed: "Not yet confirmed",
+  qualitySystem: "A framework for quality review",
+  documentPack: "The documentation pack",
+  facilityStandards: "What to verify at the facility",
+  recallTitle: "A clear route for complaints and recalls",
+  recallDescription:
+    "For any actual product issue, use the supplier and emergency contacts on the original product documentation. This non-launch preview has no operational pharmacovigilance or recall contact. A verified reporting route and approved recall procedure are required before trading.",
+  marketsPageTitle: "Start with the destination.",
+  marketsPageIntro:
+    "Registration, labelling and import requirements are market-specific. These regional groups organise an enquiry—not a claim that a product can be supplied there.",
+  registrationTitle: "Support is not authorisation.",
+  registrationText:
+    "The dossier brief can identify manufacturer information, artwork, samples and stability data needed for local filing. The importer must confirm local representation, submit the application and obtain the necessary approvals and permits.",
+  aboutTitle: "A disciplined approach\nto pharmaceutical sourcing.",
+  aboutIntro:
+    "A Surat-based working concept for business-to-business pharmaceutical wholesale and export. The brand, operating history and credentials remain subject to verification before launch.",
+  operatingTitle: "Good sourcing starts\nwith better questions.",
+  operating1:
+    "The proposed model connects a defined product requirement with a qualified manufacturing source. Facility selection must be supported by current evidence rather than assumed from a catalogue.",
+  operating2:
+    "Documentation is part of the product brief, not an administrative step added at dispatch. Align specifications, batch evidence, packaging and destination requirements early.",
+  operating3:
+    "Professional buyers need transparent limitations as much as a broad portfolio. This preview makes the unknowns visible so they can be resolved before a commercial commitment.",
+  historyTitle: "Milestones must be evidenced.",
+  historyNote:
+    "Founding date and operating milestones have not been supplied. No trading history is asserted in this preview.",
+  leadershipTitle: "Accountability, before introductions.",
+  leadershipNote:
+    "Leadership names and remits are awaiting company verification. No individuals are represented as officers or employees here.",
+  suratTitle: "A Gujarat starting point.",
+  servicesPageTitle: "The work around\nthe product matters.",
+  servicesPageIntro:
+    "Six areas to define in a sourcing engagement. Actual service availability, responsibilities and evidence must be confirmed in writing.",
+  engagementTitle: "Choose the right engagement.",
+  catalogueTitle: "A more useful\nproduct conversation.",
+  catalogueIntro:
+    "Request an organised view of the proposed portfolio. The final catalogue is awaiting verification; no downloadable stock list is represented as current.",
+  catalogueForm: "Request the catalogue",
+  catalogueContents: "What the catalogue brief covers",
+  cataloguePricing:
+    "Pricing is quoted separately against an enquiry. No prices are published on this site.",
+  catalogueUnavailable:
+    "The verified catalogue PDF is not yet available. Use the request form to record your requirements when email delivery has been configured.",
+  tradeTitle: "Let’s establish\nthe right foundations.",
+  tradeIntro:
+    "Tell us about your company, regulatory position and procurement needs. This preview lets you prepare an application; it does not create an approved trading account.",
+  contactTitle: "Start with your\nrequirements.",
+  contactIntro:
+    "A specific product list, destination and quantity helps frame the right conversation. For regulatory questions, include the applicable document requirements.",
+  contactForm: "Send an enquiry",
+  addressTitle: "Headquarters",
+  addressNote:
+    "The full registered address and direct contact channels await verification.",
+  contactPending: "Direct contact details awaiting verification",
+  legalPreview: "Preview notice — not an approved company policy",
+  legalNotice:
+    "This is a non-launch design preview. The legal entity, registered address, operating practices and approved company policies have not been supplied. This notice explains the current preview only and must be replaced with reviewed, entity-specific documentation before launch.",
+  notFoundTitle: "This page is not in the portfolio.",
+  notFoundDescription:
+    "The address may have changed. Explore the product lines or return to the homepage.",
+  home: "Return home",
+} satisfies Record<string, string>;
+export const trustItems = [
+  "WHO-GMP evidence",
+  "Schedule M scope",
+  "ISO certification",
+  "Wholesale authorisation",
+  "FSSAI scope",
+  "IEC registration",
+];
+export const orderSteps = [
+  {
+    name: "Enquiry & product list",
+    detail: "Define the product, presentation, quantity and destination.",
+  },
+  {
+    name: "Quotation & pro-forma",
+    detail: "Agree availability, scope, trade terms and commercial documents.",
+  },
+  {
+    name: "Account & licence review",
+    detail:
+      "Verify business identity, import permissions and responsibilities.",
+  },
+  {
+    name: "Allocation & batch review",
+    detail: "Confirm the source, specification and quality documentation.",
+  },
+  {
+    name: "Documents & dispatch",
+    detail: "Complete the agreed shipment file and handover arrangements.",
+  },
+];
+export const qualityPillars = [
+  {
+    name: "Supplier qualification",
+    detail:
+      "Request current site credentials and confirm the permitted manufacturing scope. Define audit and approval responsibilities before selection.",
+  },
+  {
+    name: "Incoming material controls",
+    detail:
+      "Review how the manufacturing facility identifies and releases incoming materials. Evidence should match the relevant product and process.",
+  },
+  {
+    name: "In-process controls",
+    detail:
+      "Confirm the documented controls at the responsible manufacturing site. Do not infer process compliance from a product description.",
+  },
+  {
+    name: "Finished-product review",
+    detail:
+      "Match the batch CoA to the approved specification. Clarify who is authorised to release the batch.",
+  },
+  {
+    name: "Stability & shelf life",
+    detail:
+      "Review available stability information against the formulation and pack. Agree remaining shelf-life requirements before dispatch.",
+  },
+  {
+    name: "Traceability & retention",
+    detail:
+      "Establish the batch-to-shipment record and retention-sample responsibilities. Make the recall handover clear before supply.",
+  },
+];
+export const facilityStandards = [
+  {
+    name: "Controlled areas",
+    detail: "Area classification and access-control evidence.",
+  },
+  {
+    name: "HVAC systems",
+    detail: "Qualification records appropriate to the process.",
+  },
+  {
+    name: "Water systems",
+    detail: "Defined specifications, monitoring and qualification.",
+  },
+  {
+    name: "QC laboratory",
+    detail: "Testing scope, methods and responsible personnel.",
+  },
+  {
+    name: "Storage conditions",
+    detail: "Temperature mapping and excursion procedures.",
+  },
+  {
+    name: "Documentation practices",
+    detail: "Current procedures, controlled records and traceability.",
+  },
+];
+export const documentPack = [
+  "Batch Certificate of Analysis",
+  "Applicable GMP certificate",
+  "Free Sale Certificate, where applicable",
+  "MSDS, where applicable",
+  "Packing list",
+  "Commercial invoice",
+  "Certificate of origin",
+  "Shipping documents",
+  "Stability summary, where available",
+];
+export const engagementModels = [
+  {
+    name: "Spot purchase",
+    fit: "A defined product list and a single procurement requirement.",
+    moq: "MOQ: confirm per product",
+    lead: "Lead time: confirm availability",
+    scope: "Order-specific documentation review",
+  },
+  {
+    name: "Annual contract",
+    fit: "Recurring demand with an agreed forecast and review process.",
+    moq: "Volume: agree against forecast",
+    lead: "Schedule: confirm in contract",
+    scope: "Ongoing specification and document control",
+  },
+  {
+    name: "Private label",
+    fit: "A destination-specific product and packaging brief.",
+    moq: "MOQ: manufacturing assessment",
+    lead: "Schedule: after artwork review",
+    scope: "Brand, facility and regulatory scope review",
+  },
+];
+export const suratPoints = [
+  {
+    name: "Manufacturing context",
+    detail:
+      "Gujarat is a location to consider when evaluating Indian pharmaceutical manufacturing sources. Individual facility capability must still be verified.",
+  },
+  {
+    name: "Port planning",
+    detail:
+      "Hazira, Mundra and JNPT can be considered during freight planning. The appropriate port depends on the shipment, carrier and destination.",
+  },
+  {
+    name: "Landed-cost discipline",
+    detail:
+      "Compare the complete cost of product, documentation, freight, insurance and local clearance. A sourcing location alone does not establish a cost advantage.",
+  },
+];
+export const contactChannels = [
+  {
+    name: "Sales enquiries",
+    key: "sales" as const,
+    detail: "Product lists, quantities, catalogue and trade-account questions.",
+  },
+  {
+    name: "Regulatory & documentation",
+    key: "regulatory" as const,
+    detail: "Licence checks, dossier requirements and shipment documentation.",
+  },
+  {
+    name: "General enquiries",
+    key: "general" as const,
+    detail:
+      "Company information and questions outside a specific product brief.",
+  },
+];
+export const legalPages = [
+  {
+    slug: "privacy",
+    name: "Privacy notice",
+    sections: [
+      {
+        name: "Current preview behaviour",
+        text: "The trade-account form can save text fields in this browser’s session storage. Uploaded files are not persisted. Clear the draft using the form control or close the browser session.",
+      },
+      {
+        name: "Submission handling",
+        text: "When email delivery is configured, submitted enquiry data is sent to the configured business inbox and an acknowledgement to the supplied email. Do not submit real licence copies or sensitive personal information to this design preview.",
+      },
+      {
+        name: "Before launch",
+        text: "The controller identity, legal basis, retention periods, processor agreements, rights contact and applicable transfer safeguards require review and publication.",
+      },
+    ],
+  },
+  {
+    slug: "terms",
+    name: "Terms of use",
+    sections: [
+      {
+        name: "No commercial offer",
+        text: "This preview is not an offer of supply, a quotation, a trading approval or a statement of product availability. Indicative product examples must not be relied on for procurement.",
+      },
+      {
+        name: "Professional use",
+        text: "The proposed service is for business procurement. No medical advice, consumer sale or product efficacy claim is provided.",
+      },
+      {
+        name: "Before launch",
+        text: "The legal entity, governing law, contracting process, liability terms and dispute provisions require approval before commercial use.",
+      },
+    ],
+  },
+  {
+    slug: "quality-policy",
+    name: "Quality policy notice",
+    sections: [
+      {
+        name: "Policy approval pending",
+        text: "The quality page describes a framework for document review. It is not a signed quality policy or evidence that the company holds any certification.",
+      },
+      {
+        name: "Required company evidence",
+        text: "A responsible officer must approve the quality policy, supplier qualification procedures, document controls and batch-release responsibilities before launch.",
+      },
+    ],
+  },
+  {
+    slug: "modern-slavery-statement",
+    name: "Modern slavery statement notice",
+    sections: [
+      {
+        name: "No approved statement supplied",
+        text: "This preview does not claim that a supply-chain due-diligence programme or reporting process has been implemented.",
+      },
+      {
+        name: "Before publication",
+        text: "The company must establish the applicable reporting obligations, responsible entity, supply-chain scope, assessment procedures and approval date before publishing a substantive statement.",
+      },
+    ],
+  },
+];

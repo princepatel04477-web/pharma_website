@@ -1,10 +1,11 @@
 # React Bits provenance and adaptations
 
-Retrieved the 17 P01 TS/Tailwind registry entries from DavidHDev/react-bits through GitHub API. Direct registry and shadcn CLI attempts failed TLS. No upstream component is represented as installed unchanged. Implementations are deliberately rewritten Clinical Paper equivalents based on the retrieved API/behaviour references, in src/components/reactbits/index.tsx.
+Retrieved the 17 P01 TS/Tailwind registry entries from DavidHDev/react-bits through GitHub API. Direct registry and shadcn CLI attempts failed TLS. No upstream component is represented as installed unchanged. Implementations are deliberately rewritten Clinical Paper equivalents based on the retrieved API/behaviour references, in src/components/reactbits/basic.tsx and src/components/reactbits/lanyard.tsx (re-exported by index.ts).
 
 No blacklisted component installed. No WebGL assets imported. Lanyard uses bounded DOM drag rather than a Three.js licence mesh; TiltedCard is intentionally flat per the approved motion budget; ScrollReveal uses once-only reveal rather than scroll scrub; GradualBlur uses an overflow rule instead of backdrop blur. All visual styling is token-based; reduced-motion uses CSS/media and motion hooks. These are explicit deviations from literal P01.
 
 ## Retrieved source hashes
+
 - AnimatedContent: `a43017c87e23c00ecf514ed05fbb78f5ffe6bf10211a8c9c8bbbb249d4d966ad`
 - CardNav: `d005d5b27136254b13832c641d4d0f60d018846b4f76193eeafbdd6163afa7b2`
 - Carousel: `6336dbea1dbad90e3b9071925a8a2c72ac00e29f9a9c7994f5a94d6287992e67`
@@ -22,3 +23,9 @@ No blacklisted component installed. No WebGL assets imported. Lanyard uses bound
 - StaggeredMenu: `0c07ba2bca13904288eaf3bfb4db5c2a6732817962185047954c8372492c6269`
 - Stepper: `753e07c13b3231cf56e4b46a2f57f16b97a3c6dad84826f41b80cffb3ae991a7`
 - TiltedCard: `3d18c9492fdfc13a2eeede56a61c437906941108ad00ecec9b52c4f79bb57e96`
+
+## P11 bundle separation
+
+Basic interactions now use native React, IntersectionObserver, CSS and requestAnimationFrame. Framer Motion is isolated to the desktop licence-card drag, rather than bundled into every navigation/form route. Lenis is dynamically imported only for desktop, non-reduced-motion sessions. The header, hero, forms and category pages import the basic leaf directly.
+
+SplitText preserves line structure and an accessible complete text alternative; initial-viewport text is not hidden awaiting JavaScript. Reveal animates once for below-fold content (320ms mobile / 400ms desktop), retaining visible server-rendered content and a static reduced-motion state. The component review route is not a claim that unchanged upstream components were installed successfully.

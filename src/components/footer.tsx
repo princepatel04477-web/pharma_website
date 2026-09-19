@@ -1,6 +1,66 @@
-import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
-import { brand } from '@/config/brand';
-import { navigation as nav } from '@/content/navigation';
-import { Wordmark } from './shell';
-export function Footer(){return <footer id="site-footer"><div className="container"><div className="footer-grid"><div><Link href="/"><Wordmark/></Link><p>{nav.labels.positioning}</p><address>{brand.hq.city}, {brand.hq.state}<br/>{brand.hq.country}</address></div><div><h2 className="meta">{nav.labels.products}</h2>{nav.products.map(p=><Link href={`/products/${p.slug}`} key={p.slug}>{p.name}</Link>)}</div><div><h2 className="meta">{nav.labels.company}</h2>{nav.links.map(l=><Link href={l.href} key={l.href}>{l.label}</Link>)}</div><div><h2 className="meta">{nav.labels.documentation}</h2>{nav.documents.map(l=><Link href={l.href} key={l.href}>{l.label}<ArrowUpRight size={20}/></Link>)}</div></div><div className="footer-credentials"><span className="meta">{nav.labels.credentials}</span><span>{nav.labels.registration}</span><Link className="text-link" href="/quality">{nav.links[2]?.label}<ArrowUpRight size={20}/></Link></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {brand.tradingName}</span><span>{nav.labels.disclaimer}</span><span className="meta">{nav.labels.preview}</span></div></div></footer>;}
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { brand } from "@/config/brand";
+import { navigation as nav } from "@/content/navigation";
+import { Wordmark } from "./shell";
+export function Footer() {
+  return (
+    <footer id="site-footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <Link href="/">
+              <Wordmark />
+            </Link>
+            <p>{nav.labels.positioning}</p>
+            <address>
+              {brand.hq.city}, {brand.hq.state}
+              <br />
+              {brand.hq.country}
+            </address>
+          </div>
+          <div>
+            <h2 className="meta">{nav.labels.products}</h2>
+            {nav.products.map((p) => (
+              <Link href={`/products/${p.slug}`} key={p.slug}>
+                {p.name}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <h2 className="meta">{nav.labels.company}</h2>
+            {nav.links.map((l) => (
+              <Link href={l.href} key={l.href}>
+                {l.label}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <h2 className="meta">{nav.labels.documentation}</h2>
+            {nav.documents.map((l) => (
+              <Link href={l.href} key={l.href}>
+                {l.label}
+                <ArrowUpRight size={20} />
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="footer-credentials">
+          <span className="meta">{nav.labels.credentials}</span>
+          <span>{nav.labels.registration}</span>
+          <Link className="text-link" href="/quality">
+            {nav.links[2]?.label}
+            <ArrowUpRight size={20} />
+          </Link>
+        </div>
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} {brand.tradingName}
+          </span>
+          <span>{nav.labels.disclaimer}</span>
+          <span className="meta">{nav.labels.preview}</span>
+        </div>
+      </div>
+    </footer>
+  );
+}

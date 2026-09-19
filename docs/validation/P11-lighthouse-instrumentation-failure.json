@@ -1,0 +1,4126 @@
+[
+  {
+    "route": "/",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 3328.73,
+    "cls": 0.03819714986064551,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.97,
+        "display": "1.4 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.69,
+        "display": "3.3 s"
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.93,
+        "display": "3.3 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "11.0 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10958.96000000002
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 101 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 73905,
+              "wastedPercent": 88.27861273573808
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 29464,
+              "wastedPercent": 59.96752893864464
+            }
+          ],
+          "overallSavingsMs": 600,
+          "overallSavingsBytes": 103369,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 600
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-60-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/about",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2567.391,
+    "cls": 0.1701069362801376,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.7,
+        "display": "0.17",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.1701069362801376,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.3 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10326.032000000021
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "layout-shifts",
+        "title": "Avoid large layout shifts",
+        "score": 0,
+        "display": "1 layout shift found",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "node",
+              "valueType": "node",
+              "subItemsHeading": {
+                "key": "extra"
+              },
+              "label": "Element"
+            },
+            {
+              "key": "score",
+              "valueType": "numeric",
+              "subItemsHeading": {
+                "key": "cause",
+                "valueType": "text"
+              },
+              "granularity": 0.001,
+              "label": "Layout shift score"
+            }
+          ],
+          "items": [
+            {
+              "node": {
+                "type": "node",
+                "lhId": "page-0-SECTION",
+                "path": "2,HTML,1,BODY,6,DIV,0,DIV,0,MAIN,1,SECTION",
+                "selector": "div#site-content > div.route-enter > main > section.section",
+                "boundingRect": {
+                  "top": 494,
+                  "bottom": 1322,
+                  "left": 0,
+                  "right": 412,
+                  "width": 412,
+                  "height": 828
+                },
+                "snippet": "<section class=\"section border-t border-rule\">",
+                "nodeLabel": "01 — A CONSIDERED APPROACH\nGood sourcing starts\nwith better questions.\n\nThe pro…"
+              },
+              "score": 0.1701069362801376
+            }
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-37-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products",
+    "performance": 97,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [],
+    "lcp": 2569.7999999999997,
+    "cls": 0.04122566342005255,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.041",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.04122566342005255,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.7 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10700.843999999992
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-42-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      },
+      {
+        "id": "forced-reflow-insight",
+        "title": "Forced reflow",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "table",
+              "headings": [
+                {
+                  "key": "source",
+                  "valueType": "source-location",
+                  "label": "Top function call"
+                },
+                {
+                  "key": "reflowTime",
+                  "valueType": "ms",
+                  "granularity": 1,
+                  "label": "Total reflow time"
+                }
+              ],
+              "items": [
+                {
+                  "source": {
+                    "type": "source-location",
+                    "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                    "urlProvider": "network",
+                    "line": 1,
+                    "column": 114488
+                  },
+                  "reflowTime": 0.129
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headings": [
+                {
+                  "key": "source",
+                  "valueType": "source-location",
+                  "label": "Source"
+                },
+                {
+                  "key": "reflowTime",
+                  "valueType": "ms",
+                  "granularity": 1,
+                  "label": "Total reflow time"
+                }
+              ],
+              "items": [
+                {
+                  "source": {
+                    "type": "text",
+                    "value": "[unattributed]"
+                  },
+                  "reflowTime": 49.364
+                },
+                {
+                  "source": {
+                    "type": "source-location",
+                    "url": "http://localhost:3000/_next/static/chunks/871-ebdfd165f07e6ce0.js",
+                    "urlProvider": "network",
+                    "line": 0,
+                    "column": 1666
+                  },
+                  "reflowTime": 0.129
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0.5,
+        "display": "Est savings of 12 KiB",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+              "wastedBytes": 11947,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 4382
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 3770
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 3883
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 4259
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 4517
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 3512
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://localhost:3000/_next/static/chunks/493-7733e64000cb1819.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 3427
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 11947
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "7683A28D38E1CA9944B44D109EC2E121": {
+                    "url": "http://localhost:3000/products",
+                    "navStartToEndTime": 75,
+                    "transferSize": 8135,
+                    "isLongest": true,
+                    "children": {
+                      "4664.3": {
+                        "url": "http://localhost:3000/_next/static/css/1cdcba5e0e297197.css",
+                        "navStartToEndTime": 59,
+                        "transferSize": 11746,
+                        "isLongest": true,
+                        "children": {
+                          "4664.32": {
+                            "url": "http://localhost:3000/_next/static/media/db9d659a1acad1e2.woff2",
+                            "navStartToEndTime": 193,
+                            "transferSize": 21940,
+                            "isLongest": true,
+                            "children": {}
+                          },
+                          "4664.31": {
+                            "url": "http://localhost:3000/_next/static/media/e872e3f251959e82-s.woff2",
+                            "navStartToEndTime": 147,
+                            "transferSize": 21804,
+                            "children": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 193
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render-blocking requests",
+        "score": 0,
+        "display": "Est savings of 610 ms",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/css/1cdcba5e0e297197.css",
+              "totalBytes": 11746,
+              "wastedMs": 157
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/services",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2574.4244999999996,
+    "cls": 0.1277420045935859,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.82,
+        "display": "0.128",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.1277420045935859,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.5 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10484.37600000001
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "layout-shifts",
+        "title": "Avoid large layout shifts",
+        "score": 0,
+        "display": "1 layout shift found",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "node",
+              "valueType": "node",
+              "subItemsHeading": {
+                "key": "extra"
+              },
+              "label": "Element"
+            },
+            {
+              "key": "score",
+              "valueType": "numeric",
+              "subItemsHeading": {
+                "key": "cause",
+                "valueType": "text"
+              },
+              "granularity": 0.001,
+              "label": "Layout shift score"
+            }
+          ],
+          "items": [
+            {
+              "node": {
+                "type": "node",
+                "lhId": "page-0-SECTION",
+                "path": "2,HTML,1,BODY,6,DIV,0,DIV,0,MAIN,1,SECTION",
+                "selector": "div#site-content > div.route-enter > main > section#regulatory-dossier-support",
+                "boundingRect": {
+                  "top": 419,
+                  "bottom": 1456,
+                  "left": 0,
+                  "right": 412,
+                  "width": 412,
+                  "height": 1037
+                },
+                "snippet": "<section class=\"section service-detail service-detail-0\" id=\"regulatory-dossier-support\">",
+                "nodeLabel": "01\nRegulatory dossier support\n\nDefine the destination and product classificatio…"
+              },
+              "score": 0.1277420045935859,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "extra": {
+                      "type": "url",
+                      "value": "http://localhost:3000/_next/static/media/e872e3f251959e82-s.woff2"
+                    },
+                    "cause": "Web font loaded"
+                  },
+                  {
+                    "extra": {
+                      "type": "url",
+                      "value": "http://localhost:3000/_next/static/media/db9d659a1acad1e2.woff2"
+                    },
+                    "cause": "Web font loaded"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-43-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/quality",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2570.4764999999998,
+    "cls": 0.04412507326214117,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.044",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.04412507326214117,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.4 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10439.960000000003
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 110 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 37250,
+              "wastedPercent": 75.81313515569806
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 112602,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-38-META",
+                "path": "2,HTML,0,HEAD,15,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/markets",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2564.6459999999997,
+    "cls": 0.04577432699059629,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.046",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.04577432699059629,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.4 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10383.556000000031
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 150,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 150
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/catalogue",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 3324.4660000000003,
+    "cls": 0.08483388950151599,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.69,
+        "display": "3.3 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.93,
+        "display": "0.085",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.08483388950151599,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.93,
+        "display": "3.3 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.5 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10548.288000000039
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 114 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 73905,
+              "wastedPercent": 88.27861273573808
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 760,
+          "overallSavingsBytes": 116487,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 760
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-67-META",
+                "path": "2,HTML,0,HEAD,11,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/contact",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 3333.8200000000006,
+    "cls": 0.001213791115292711,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.69,
+        "display": "3.3 s"
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.93,
+        "display": "3.3 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.4 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10440.360000000002
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 114 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 73905,
+              "wastedPercent": 88.27861273573808
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 620,
+          "overallSavingsBytes": 116487,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 620
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-56-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/trade-account",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 3320.59,
+    "cls": 0.04432333560577544,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.69,
+        "display": "3.3 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.044",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.04432333560577544,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.93,
+        "display": "3.3 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.3 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10342.540000000028
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 114 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 73905,
+              "wastedPercent": 88.27861273573808
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42580,
+              "wastedPercent": 86.66240965164937
+            }
+          ],
+          "overallSavingsMs": 760,
+          "overallSavingsBytes": 116485,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 760
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-50-META",
+                "path": "2,HTML,0,HEAD,11,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products/generic-formulations",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2581.2000000000003,
+    "cls": 0.03954334506411514,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.04",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.03954334506411514,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.5 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10522.555999999991
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products/branded-generics",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2573.5095000000006,
+    "cls": 0.03954334506411514,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.04",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.03954334506411514,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.3 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10333.348000000024
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,11,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products/otc-products",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2580.657,
+    "cls": 0.000712908773148303,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.5 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10485.343999999983
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products/nutraceuticals",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2566.386,
+    "cls": 0.000712908773148303,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.4 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10407.252000000024
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,11,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products/surgical-diagnostics",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2565.7815000000005,
+    "cls": 0.04182814773282726,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.042",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.04182814773282726,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.4 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10416.971999999996
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,16,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/products/personal-care-fmcg",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2575.6095,
+    "cls": 0.04055809980742892,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.99,
+        "display": "0.041",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.04055809980742892,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.3 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10303.484000000004
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-41-META",
+                "path": "2,HTML,0,HEAD,11,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/privacy",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2563.9829999999997,
+    "cls": 0.01982629528232447,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.3 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10256.888000000037
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 150,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 150
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-35-META",
+                "path": "2,HTML,0,HEAD,11,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/terms",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2566.3334999999997,
+    "cls": 0.001756413652615821,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.4 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10359.34000000001
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 310,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 310
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-35-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/quality-policy",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2566.9874999999997,
+    "cls": 0.1029864869558235,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.89,
+        "display": "0.103",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.1029864869558235,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.2 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10221.74800000002
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "layout-shifts",
+        "title": "Avoid large layout shifts",
+        "score": 0,
+        "display": "1 layout shift found",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "node",
+              "valueType": "node",
+              "subItemsHeading": {
+                "key": "extra"
+              },
+              "label": "Element"
+            },
+            {
+              "key": "score",
+              "valueType": "numeric",
+              "subItemsHeading": {
+                "key": "cause",
+                "valueType": "text"
+              },
+              "granularity": 0.001,
+              "label": "Layout shift score"
+            }
+          ],
+          "items": [
+            {
+              "node": {
+                "type": "node",
+                "lhId": "page-0-DIV",
+                "path": "2,HTML,1,BODY,6,DIV,0,DIV,0,MAIN,1,DIV",
+                "selector": "div#site-content > div.route-enter > main > div.container",
+                "boundingRect": {
+                  "top": 467,
+                  "bottom": 1061,
+                  "left": 24,
+                  "right": 388,
+                  "width": 364,
+                  "height": 593
+                },
+                "snippet": "<div class=\"container legal-body\">",
+                "nodeLabel": "Policy approval pending\n\nThe quality page describes a framework for document re…"
+              },
+              "score": 0.1029864869558235,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "extra": {
+                      "type": "url",
+                      "value": "http://localhost:3000/_next/static/media/e872e3f251959e82-s.woff2"
+                    },
+                    "cause": "Web font loaded"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-35-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "route": "/modern-slavery-statement",
+    "performance": null,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66,
+    "auditErrors": [
+      {
+        "id": "speed-index",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "screenshot-thumbnails",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "final-screenshot",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      },
+      {
+        "id": "server-response-time",
+        "error": "No navigations insights found"
+      },
+      {
+        "id": "metrics",
+        "error": "Chrome didn't collect any screenshots during the page load. Please make sure there is content visible on the page, and then try re-running Lighthouse. (NO_SCREENSHOTS)"
+      }
+    ],
+    "lcp": 2572.0289999999995,
+    "cls": 0.07403601273660775,
+    "failedAudits": [
+      {
+        "id": "first-contentful-paint",
+        "title": "First Contentful Paint",
+        "score": 0.99,
+        "display": "1.2 s"
+      },
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.88,
+        "display": "2.6 s"
+      },
+      {
+        "id": "cumulative-layout-shift",
+        "title": "Cumulative Layout Shift",
+        "score": 0.95,
+        "display": "0.074",
+        "details": {
+          "type": "debugdata",
+          "items": [
+            {
+              "cumulativeLayoutShiftMainFrame": 0.07403601273660775,
+              "newEngineResultDiffered": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.98,
+        "display": "2.6 s"
+      },
+      {
+        "id": "mainthread-work-breakdown",
+        "title": "Minimize main-thread work",
+        "score": 0.5,
+        "display": "10.2 s",
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "groupLabel",
+              "valueType": "text",
+              "label": "Category"
+            },
+            {
+              "key": "duration",
+              "valueType": "ms",
+              "granularity": 1,
+              "label": "Time Spent"
+            }
+          ],
+          "items": [
+            {
+              "group": "other",
+              "groupLabel": "Other",
+              "duration": 10229.332000000004
+            }
+          ],
+          "sortedBy": [
+            "duration"
+          ]
+        }
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "display": "Est savings of 115 KiB",
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://localhost:3000/_next/static/chunks/507-3ae8341b8d56e496.js",
+              "totalBytes": 83717,
+              "wastedBytes": 75352,
+              "wastedPercent": 90.00804258741526
+            },
+            {
+              "url": "http://localhost:3000/_next/static/chunks/841-1b4b5b687ce37404.js",
+              "totalBytes": 49133,
+              "wastedBytes": 42582,
+              "wastedPercent": 86.66580620618444
+            }
+          ],
+          "overallSavingsMs": 160,
+          "overallSavingsBytes": 117934,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 160
+            }
+          }
+        }
+      },
+      {
+        "id": "is-crawlable",
+        "title": "Page is blocked from indexing",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "source",
+              "valueType": "code",
+              "label": "Blocking Directive Source"
+            }
+          ],
+          "items": [
+            {
+              "source": {
+                "type": "node",
+                "lhId": "1-35-META",
+                "path": "2,HTML,0,HEAD,12,META",
+                "selector": "head > meta",
+                "boundingRect": {
+                  "top": 0,
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0,
+                  "width": 0,
+                  "height": 0
+                },
+                "snippet": "<meta name=\"robots\" content=\"noindex, nofollow\" />",
+                "nodeLabel": "head > meta"
+              }
+            },
+            {
+              "source": "X-Robots-Tag: noindex, nofollow"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

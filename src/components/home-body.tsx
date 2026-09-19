@@ -1,9 +1,159 @@
-import Link from 'next/link';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
-import { getCategories,getServices,getMarkets,getFAQs } from '@/content';
-import { copy,orderSteps } from '@/content/site';
-import { ScrollReveal,ScrollStack,Stepper,TiltedCard } from '@/components/reactbits';
-import { Reveal } from '@/components/motion';
-import { CategoryIcon,Label,Checklist,ClosingCTA } from '@/components/ui';
-import { FAQList,MarketTable } from '@/components/interactive';
-export function HomeBody(){return <><section className="section"><div className="container editorial-grid"><div><Label>{copy.positioningLabel}</Label><h2 className="display section-title">{copy.positioningTitle}</h2></div><ScrollReveal><div className="editorial-copy"><p className="lead">{copy.positioning1}</p><p>{copy.positioning2}</p><p>{copy.positioning3}</p><Link href="/about" className="text-link">{copy.aboutLink}<ArrowUpRight size={20}/></Link></div></ScrollReveal></div></section><section className="section product-section" id="portfolio"><div className="container"><Label>{copy.productsLabel}</Label><div className="section-heading"><h2 className="display section-title">{copy.productsTitle}</h2><p>{copy.productsDescription}</p></div><div className="product-grid">{getCategories().map((category,i)=><Reveal key={category.slug} delay={i%3*.06}><TiltedCard><Link className="product-card" href={`/products/${category.slug}`}><div className="product-card-top"><CategoryIcon name={category.icon}/><span className="meta">{String(i+1).padStart(2,'0')}</span></div><h3>{category.name}</h3><p>{category.scope}</p><div className="product-card-bottom"><span className="meta">{category.dosageForms.length} {copy.formLabel}</span>{category.importLicenceRequired&&<span className="licence-badge">{copy.licence}</span>}<ArrowUpRight size={20}/></div></Link></TiltedCard></Reveal>)}</div><div className="section-bottom"><span className="meta">{copy.indicative}</span><Link href="/products" className="button">{copy.allProducts}<ArrowRight size={20}/></Link></div></div></section><section className="section capabilities"><div className="container"><Label>{copy.servicesLabel}</Label><div className="section-heading"><h2 className="display section-title">{copy.servicesTitle}</h2><p>{copy.servicesDescription}</p></div><ScrollStack>{getServices().map((service,i)=><article className="service-stack-card" key={service.slug}><div className="service-stack-left"><span className="meta">{String(i+1).padStart(2,'0')} / {String(getServices().length).padStart(2,'0')}</span><CategoryIcon name={service.icon}/><h3 className="display">{service.name}</h3><p>{service.summary}</p><Link href={`/services#${service.slug}`} className="text-link">{copy.servicesLink}<ArrowUpRight size={20}/></Link></div><div className="service-stack-right"><span className="meta">{copy.deliverables}</span><Checklist items={service.deliverables}/></div></article>)}</ScrollStack></div></section><section className="section"><div className="container editorial-grid"><div><Label>{copy.marketsLabel}</Label><h2 className="display section-title">{copy.marketsTitle}</h2><p className="section-description">{copy.marketsDescription}</p><Link href="/markets" className="text-link">{copy.marketsLink}<ArrowUpRight size={20}/></Link><p className="meta mt-8">{copy.marketsNote}</p></div><MarketTable markets={getMarkets()}/></div></section><section className="section"><div className="container"><Label>{copy.processLabel}</Label><h2 className="display section-title mb-14">{copy.processTitle}</h2><Stepper steps={orderSteps}/></div></section><section className="section"><div className="container editorial-grid"><div><Label>{copy.faqLabel}</Label><h2 className="display section-title">{copy.faqTitle}</h2><Link href="/contact#faqs" className="text-link mt-8">{copy.faqLink}<ArrowUpRight size={20}/></Link></div><FAQList items={getFAQs().slice(0,6)}/></div></section><ClosingCTA dark/></>;}
+import { ProductRail } from "@/components/product-rail";
+import Link from "next/link";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { getCategories, getServices, getMarkets, getFAQs } from "@/content";
+import { copy, orderSteps } from "@/content/site";
+import {
+  ScrollReveal,
+  ScrollStack,
+  Stepper,
+  TiltedCard,
+} from "@/components/reactbits/basic";
+import { Reveal } from "@/components/motion";
+import { CategoryIcon, Label, Checklist, ClosingCTA } from "@/components/ui";
+import { FAQList, MarketTable } from "@/components/interactive";
+export function HomeBody() {
+  return (
+    <>
+      <section className="section">
+        <div className="container editorial-grid">
+          <div>
+            <Label>{copy.positioningLabel}</Label>
+            <h2 className="display section-title">{copy.positioningTitle}</h2>
+          </div>
+          <ScrollReveal>
+            <div className="editorial-copy">
+              <p className="lead">{copy.positioning1}</p>
+              <p>{copy.positioning2}</p>
+              <p>{copy.positioning3}</p>
+              <Link href="/about" className="text-link">
+                {copy.aboutLink}
+                <ArrowUpRight size={20} />
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+      <section className="section product-section" id="portfolio">
+        <div className="container">
+          <Label>{copy.productsLabel}</Label>
+          <div className="section-heading">
+            <h2 className="display section-title">{copy.productsTitle}</h2>
+            <p>{copy.productsDescription}</p>
+          </div>
+          <ProductRail
+            label={copy.categoriesLabel}
+            count={getCategories().length}
+          >
+            {getCategories().map((category, i) => (
+              <Reveal key={category.slug} delay={(i % 3) * 0.06}>
+                <TiltedCard>
+                  <Link
+                    className="product-card"
+                    href={`/products/${category.slug}`}
+                  >
+                    <div className="product-card-top">
+                      <CategoryIcon name={category.icon} />
+                      <span className="meta">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3>{category.name}</h3>
+                    <p>{category.scope}</p>
+                    <div className="product-card-bottom">
+                      <span className="meta">
+                        {category.dosageForms.length} {copy.formLabel}
+                      </span>
+                      {category.importLicenceRequired && (
+                        <span className="licence-badge">{copy.licence}</span>
+                      )}
+                      <ArrowUpRight size={20} />
+                    </div>
+                  </Link>
+                </TiltedCard>
+              </Reveal>
+            ))}
+          </ProductRail>
+          <div className="section-bottom">
+            <span className="meta">{copy.indicative}</span>
+            <Link href="/products" className="button">
+              {copy.allProducts}
+              <ArrowRight size={20} />
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="section capabilities">
+        <div className="container">
+          <Label>{copy.servicesLabel}</Label>
+          <div className="section-heading">
+            <h2 className="display section-title">{copy.servicesTitle}</h2>
+            <p>{copy.servicesDescription}</p>
+          </div>
+          <ScrollStack>
+            {getServices().map((service, i) => (
+              <article className="service-stack-card" key={service.slug}>
+                <div className="service-stack-left">
+                  <span className="meta">
+                    {String(i + 1).padStart(2, "0")} /{" "}
+                    {String(getServices().length).padStart(2, "0")}
+                  </span>
+                  <CategoryIcon name={service.icon} />
+                  <h3 className="display">{service.name}</h3>
+                  <p>{service.summary}</p>
+                  <Link
+                    href={`/services#${service.slug}`}
+                    className="text-link"
+                  >
+                    {copy.servicesLink}
+                    <ArrowUpRight size={20} />
+                  </Link>
+                </div>
+                <div className="service-stack-right">
+                  <span className="meta">{copy.deliverables}</span>
+                  <Checklist items={service.deliverables} />
+                </div>
+              </article>
+            ))}
+          </ScrollStack>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container editorial-grid">
+          <div>
+            <Label>{copy.marketsLabel}</Label>
+            <h2 className="display section-title">{copy.marketsTitle}</h2>
+            <p className="section-description">{copy.marketsDescription}</p>
+            <Link href="/markets" className="text-link">
+              {copy.marketsLink}
+              <ArrowUpRight size={20} />
+            </Link>
+            <p className="meta mt-8">{copy.marketsNote}</p>
+          </div>
+          <MarketTable markets={getMarkets()} />
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <Label>{copy.processLabel}</Label>
+          <h2 className="display section-title mb-14">{copy.processTitle}</h2>
+          <Stepper steps={orderSteps} />
+        </div>
+      </section>
+      <section className="section">
+        <div className="container editorial-grid">
+          <div>
+            <Label>{copy.faqLabel}</Label>
+            <h2 className="display section-title">{copy.faqTitle}</h2>
+            <Link href="/contact#faqs" className="text-link mt-8">
+              {copy.faqLink}
+              <ArrowUpRight size={20} />
+            </Link>
+          </div>
+          <FAQList items={getFAQs().slice(0, 6)} />
+        </div>
+      </section>
+      <ClosingCTA dark />
+    </>
+  );
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Mobile overlay scroll restoration, focus trap and Escape",
+    "passed": true
+  },
+  {
+    "name": "Desktop mega navigation arrow keys and focus return",
+    "passed": true
+  },
+  {
+    "name": "Contact prefill, blur validation, offline preservation and retry",
+    "passed": true
+  },
+  {
+    "name": "Catalogue business-email check and successful confirmation UI",
+    "passed": true
+  },
+  {
+    "name": "Trade step validation, refresh persistence, oversized upload and complete review",
+    "passed": true
+  },
+  {
+    "name": "Mobile molecule table scroll and overflow cue",
+    "passed": true
+  },
+  {
+    "name": "Unknown route gives a real 404",
+    "passed": true
+  }
+]

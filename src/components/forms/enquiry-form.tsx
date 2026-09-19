@@ -1,26 +1,595 @@
-'use client';
-import Link from 'next/link';
-import { useEffect,useRef,useState } from 'react';
-import { ArrowRight,ArrowUpRight,Check,AlertCircle,Upload,LoaderCircle } from 'lucide-react';
-import { formCopy as text,fieldsFor,tradeSteps,tradeFields,type FormType,type FormField } from '@/content/forms';
-import { navigation } from '@/content/navigation';
-import { countryOptions,countryName } from '@/lib/countries';
-import { enquirySchema,draftSchema,MAX_FILE_BYTES,ACCEPTED_FILES,type EnquiryResponse } from '@/lib/enquiry-schema';
-import { Stepper } from '@/components/reactbits';
-type Values=Record<string,string|string[]>;
-export function EnquiryForm({type}:{type:FormType}){
- const [values,setValues]=useState<Values>({categories:[]});const [consent,setConsent]=useState(false);const [errors,setErrors]=useState<Record<string,string>>({});const [touched,setTouched]=useState<Set<string>>(new Set());const [step,setStep]=useState(0);const [file,setFile]=useState<File|null>(null);const [status,setStatus]=useState<'idle'|'submitting'|'success'|'error'>('idle');const [message,setMessage]=useState('');const [reference,setReference]=useState('');const [ready,setReady]=useState(false);const [storageError,setStorageError]=useState(false);const [honeypot,setHoneypot]=useState('');const started=useRef(0);const requestId=useRef('');const busy=useRef(false);const form=useRef<HTMLFormElement>(null);const fileInput=useRef<HTMLInputElement>(null);const successRef=useRef<HTMLDivElement>(null);const fields=fieldsFor(type);
- useEffect(()=>{started.current=Date.now();requestId.current=crypto.randomUUID();if(type==='trade'){try{const raw=sessionStorage.getItem('clinical-trade-draft');if(raw){const parsed=draftSchema.safeParse(JSON.parse(raw));if(parsed.success){setValues(parsed.data.values);setStep(parsed.data.step);}}}catch{setStorageError(true);}}if(type==='contact'){const category=new URLSearchParams(window.location.search).get('category');if(category&&navigation.products.some(c=>c.slug===category))setValues(v=>({...v,category}));}setReady(true);},[type]);
- useEffect(()=>{if(type!=='trade'||!ready||status==='success')return;try{sessionStorage.setItem('clinical-trade-draft',JSON.stringify({values,step}));}catch{setStorageError(true);}},[type,values,step,ready,status]);
- useEffect(()=>{if(status==='success')successRef.current?.focus();},[status]);
- const validate=(next:Values,selected?:string[])=>{const result=enquirySchema.safeParse({...next,type,consent});const found:Record<string,string>={};if(!result.success)for(const issue of result.error.issues){const key=String(issue.path[0]);if(!selected||selected.includes(key))found[key]=issue.message;}return found;};
- const update=(name:string,value:string|string[])=>{const next={...values,[name]:value};setValues(next);if(touched.has(name))setErrors(e=>{const nextErrors={...e};delete nextErrors[name];return {...nextErrors,...validate(next,[name])};});};
- const blur=(name:string)=>{setTouched(t=>new Set(t).add(name));setErrors(e=>{const next={...e};delete next[name];return {...next,...validate(values,[name])};});};
- const focusError=(found:Record<string,string>)=>{setTimeout(()=>{const key=Object.keys(found)[0];if(key)form.current?.querySelector<HTMLElement>(`[name="${key}"], [data-field="${key}"] input`)?.focus();},0);};
- const go=(next:number)=>{if(next<=step){setStep(next);return;}const names=tradeFields.filter(f=>(f.step??0)<next).map(f=>f.name);const found=validate(values,names);if(next>1&&!file)found.attachment=text.uploadRequired;if(Object.keys(found).length){setErrors(found);const first=tradeFields.find(f=>found[f.name]);if(first)setStep(first.step??0);else if(found.attachment)setStep(1);focusError(found);return;}setErrors({});setStep(next);};
- const chooseFile=(chosen:File|undefined)=>{if(!chosen){setFile(null);return;}if(chosen.size>MAX_FILE_BYTES||!ACCEPTED_FILES.includes(chosen.type)){setFile(null);setErrors(e=>({...e,attachment:text.uploadError}));if(fileInput.current)fileInput.current.value='';return;}setFile(chosen);setErrors(e=>{const next={...e};delete next.attachment;return next;});};
- const submit=async(e:React.FormEvent)=>{e.preventDefault();if(busy.current)return;const found=validate(values);if(type==='trade'&&!file)found.attachment=text.uploadRequired;if(Object.keys(found).length){setErrors(found);setMessage(text.invalid);if(type==='trade'){const first=tradeFields.find(f=>found[f.name]);if(first)setStep(first.step??0);else if(found.attachment)setStep(1);}focusError(found);return;}if(Date.now()-started.current<3000){setMessage(text.tooFast);return;}busy.current=true;setStatus('submitting');setMessage('');const body=new FormData();body.set('payload',JSON.stringify({data:{...values,type,consent},startedAt:started.current,honeypot,requestId:requestId.current}));if(file)body.set('attachment',file);try{const response=await fetch('/api/enquiry',{method:'POST',body,signal:AbortSignal.timeout(25000)});const result:EnquiryResponse=await response.json();if(!response.ok||!result.ok){setStatus('error');setMessage(result.message||text.failure);if(result.errors)setErrors(result.errors);return;}setStatus('success');setMessage(result.message);setReference(result.reference??'');if(type==='trade')sessionStorage.removeItem('clinical-trade-draft');}catch{setStatus('error');setMessage(text.networkError);}finally{busy.current=false;}};
- const renderField=(field:FormField)=>{const error=errors[field.name];const id=`${type}-${field.name}`;const raw=values[field.name];const value=typeof raw==='string'?raw:'';const common={id,name:field.name,'aria-invalid':!!error,'aria-describedby':error?`${id}-error`:undefined,onBlur:()=>blur(field.name),autoComplete:field.autoComplete};return <div className={`form-field ${field.wide?'wide':''}`} key={field.name} data-field={field.name}>{field.type==='categories'?<fieldset><legend className="meta">{field.label}</legend><div className="category-checks">{navigation.products.map(category=><label key={category.slug}><input type="checkbox" name={field.name} value={category.slug} checked={Array.isArray(raw)&&raw.includes(category.slug)} onBlur={()=>blur(field.name)} onChange={e=>{const selected=Array.isArray(raw)?raw:[];update(field.name,e.target.checked?[...selected,category.slug]:selected.filter(s=>s!==category.slug));}} aria-invalid={!!error} aria-describedby={error?`${id}-error`:undefined}/><span>{category.name}</span></label>)}</div></fieldset>:<><label className="meta" htmlFor={id}>{field.label}{field.optional&&<span className="optional"> · {text.optional}</span>}</label>{field.type==='select'?<select {...common} value={value} onChange={e=>update(field.name,e.target.value)}><option value="">{field.name==='category'?text.noCategory:text.select}</option>{field.name==='country'?countryOptions.map(country=><option key={country.code} value={country.code}>{country.name}</option>):field.name==='category'?navigation.products.map(category=><option value={category.slug} key={category.slug}>{category.name}</option>):field.options?.map(option=><option key={option} value={option}>{option}</option>)}</select>:field.type==='textarea'?<textarea {...common} value={value} onChange={e=>update(field.name,e.target.value)} rows={5} maxLength={5000}/>:<input {...common} type={field.type} inputMode={field.type==='tel'?'tel':field.type==='email'?'email':field.type==='number'?'numeric':field.type==='url'?'url':'text'} value={value} onChange={e=>update(field.name,e.target.value)} maxLength={300}/>}</>}{error&&<p className="field-error" id={`${id}-error`}><AlertCircle size={20}/>{error}</p>}</div>;};
- if(status==='success')return <div className="form-success" ref={successRef} tabIndex={-1} role="status"><Check size={24}/><h2 className="display">{text.success}</h2><p>{message}</p><p>{text.successDetail}</p>{type==='catalogue'&&<p>{text.catalogueSuccess}</p>}<p className="meta">{text.reference}: {reference}</p></div>;
- return <form className={`enquiry-form form-${type}`} ref={form} onSubmit={submit} noValidate><div className="form-notice"><AlertCircle size={20}/><p>{text.preview}</p></div>{type==='trade'&&<><Stepper steps={tradeSteps} active={step} onChange={go}/><div className="draft-tools"><p>{storageError?text.storageUnavailable:text.saved}</p><button type="button" onClick={()=>{setValues({categories:[]});setStep(0);setFile(null);setConsent(false);setErrors({});setMessage('');requestId.current=crypto.randomUUID();try{sessionStorage.removeItem('clinical-trade-draft');}catch{setStorageError(true);}}}>{text.clear}</button></div></>}<p className="form-required">{text.required}</p><div className="form-grid">{fields.filter(field=>type!=='trade'||field.step===step).map(renderField)}{type==='trade'&&step===1&&<div className="form-field wide"><label className="upload-label" htmlFor="licence-attachment"><Upload size={24}/><strong>{text.upload}</strong><span>{file?.name??text.uploadHelp}</span></label><input id="licence-attachment" ref={fileInput} type="file" name="attachment" accept="application/pdf,image/jpeg,image/png" onChange={e=>chooseFile(e.target.files?.[0])} aria-invalid={!!errors.attachment} aria-describedby="attachment-help attachment-error"/><p id="attachment-help">{text.fileReselect}</p><p>{text.licenceHelp}</p><p id="attachment-error" className="field-error">{errors.attachment&&<><AlertCircle size={20}/>{errors.attachment}</>}</p></div>}</div><div className="honeypot" aria-hidden="true"><label htmlFor={`${type}-fax`}>{text.honey}</label><input tabIndex={-1} autoComplete="off" id={`${type}-fax`} value={honeypot} onChange={e=>setHoneypot(e.target.value)}/></div>{type==='trade'&&step===3&&<section className="review-summary"><h2>{text.review}</h2>{tradeSteps.map((section,i)=><div key={section.name}><div className="review-heading"><h3>{section.name}</h3>{i!==3&&<button type="button" onClick={()=>setStep(i)} aria-label={`${text.edit} ${section.name}`}>{text.edit}</button>}</div><dl>{tradeFields.filter(f=>f.step===i).map(f=><div key={f.name}><dt>{f.label}</dt><dd>{f.name==='country'?countryName(String(values[f.name]??'')):Array.isArray(values[f.name])?(values[f.name] as string[]).map(slug=>navigation.products.find(p=>p.slug===slug)?.name??slug).join(', '):values[f.name]}</dd></div>)}</dl></div>)}</section>}{(type!=='trade'||step===3)&&<div className="consent"><label><input type="checkbox" name="consent" checked={consent} onChange={e=>{setConsent(e.target.checked);setErrors(previous=>{const next={...previous};delete next.consent;return next;});}} aria-invalid={!!errors.consent}/><span>{text.consent}</span></label><Link href="/privacy" className="text-link">{text.privacy}<ArrowUpRight size={20}/></Link>{errors.consent&&<p className="field-error"><AlertCircle size={20}/>{errors.consent}</p>}</div>}<div aria-live="polite">{message&&<p className="form-message" role="alert"><AlertCircle size={20}/>{message}</p>}</div><div className="form-actions">{type==='trade'&&step>0&&<button className="button" type="button" onClick={()=>setStep(step-1)} disabled={status==='submitting'}>{text.back}</button>}{type==='trade'&&step<3?<button className="button primary" type="button" onClick={()=>go(step+1)}>{text.next}<ArrowRight size={20}/></button>:<button className="button primary" type="submit" disabled={status==='submitting'} aria-busy={status==='submitting'}>{status==='submitting'?text.submitting:type==='trade'?text.tradeSubmit:type==='catalogue'?text.catalogueSubmit:text.submit}{status==='submitting'?<LoaderCircle size={20} className="submit-spinner"/>:<ArrowUpRight size={20}/>}</button>}</div><p className="response-note">{text.contactWindow}</p></form>;
+"use client";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  AlertCircle,
+  Upload,
+  LoaderCircle,
+} from "lucide-react";
+import {
+  formCopy as text,
+  fieldsFor,
+  tradeSteps,
+  tradeFields,
+  type FormType,
+  type FormField,
+} from "@/content/forms";
+import { navigation } from "@/content/navigation";
+import { countryOptions, countryName } from "@/lib/countries";
+import {
+  enquirySchema,
+  draftSchema,
+  MAX_FILE_BYTES,
+  ACCEPTED_FILES,
+  type EnquiryResponse,
+} from "@/lib/enquiry-schema";
+import { Stepper } from "@/components/reactbits/basic";
+type Values = Record<string, string | string[]>;
+export function EnquiryForm({ type }: { type: FormType }) {
+  const [values, setValues] = useState<Values>({ categories: [] });
+  const [consent, setConsent] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Set<string>>(new Set());
+  const [step, setStep] = useState(0);
+  const [file, setFile] = useState<File | null>(null);
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState("");
+  const [reference, setReference] = useState("");
+  const [ready, setReady] = useState(false);
+  const [storageError, setStorageError] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const started = useRef(0);
+  const requestId = useRef("");
+  const busy = useRef(false);
+  const form = useRef<HTMLFormElement>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+  const fields = fieldsFor(type);
+  useEffect(() => {
+    started.current = Date.now();
+    requestId.current = crypto.randomUUID();
+    if (type === "trade") {
+      try {
+        const raw = sessionStorage.getItem("clinical-trade-draft");
+        if (raw) {
+          const parsed = draftSchema.safeParse(JSON.parse(raw));
+          if (parsed.success) {
+            setValues(parsed.data.values);
+            setStep(parsed.data.step);
+          }
+        }
+      } catch {
+        setStorageError(true);
+      }
+    }
+    if (type === "contact") {
+      const category = new URLSearchParams(window.location.search).get(
+        "category",
+      );
+      if (category && navigation.products.some((c) => c.slug === category))
+        setValues((v) => ({ ...v, category }));
+    }
+    setReady(true);
+  }, [type]);
+  useEffect(() => {
+    if (type !== "trade" || !ready || status === "success") return;
+    try {
+      sessionStorage.setItem(
+        "clinical-trade-draft",
+        JSON.stringify({ values, step }),
+      );
+    } catch {
+      setStorageError(true);
+    }
+  }, [type, values, step, ready, status]);
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
+  const validate = (next: Values, selected?: string[]) => {
+    const result = enquirySchema.safeParse({ ...next, type, consent });
+    const found: Record<string, string> = {};
+    if (!result.success)
+      for (const issue of result.error.issues) {
+        const key = String(issue.path[0]);
+        if (!selected || selected.includes(key)) found[key] = issue.message;
+      }
+    return found;
+  };
+  const update = (name: string, value: string | string[]) => {
+    const next = { ...values, [name]: value };
+    setValues(next);
+    if (touched.has(name))
+      setErrors((e) => {
+        const nextErrors = { ...e };
+        delete nextErrors[name];
+        return { ...nextErrors, ...validate(next, [name]) };
+      });
+  };
+  const blur = (name: string) => {
+    setTouched((t) => new Set(t).add(name));
+    setErrors((e) => {
+      const next = { ...e };
+      delete next[name];
+      return { ...next, ...validate(values, [name]) };
+    });
+  };
+  const focusError = (found: Record<string, string>) => {
+    setTimeout(() => {
+      const key = Object.keys(found)[0];
+      if (key)
+        form.current
+          ?.querySelector<HTMLElement>(
+            `[name="${key}"], [data-field="${key}"] input`,
+          )
+          ?.focus();
+    }, 0);
+  };
+  const go = (next: number) => {
+    if (next <= step) {
+      setStep(next);
+      return;
+    }
+    const names = tradeFields
+      .filter((f) => (f.step ?? 0) < next)
+      .map((f) => f.name);
+    const found = validate(values, names);
+    if (next > 1 && !file) found.attachment = text.uploadRequired;
+    if (Object.keys(found).length) {
+      setTouched((previous) => new Set([...previous, ...Object.keys(found)]));
+      setErrors(found);
+      const first = tradeFields.find((f) => found[f.name]);
+      if (first) setStep(first.step ?? 0);
+      else if (found.attachment) setStep(1);
+      focusError(found);
+      return;
+    }
+    setErrors({});
+    setStep(next);
+  };
+  const chooseFile = (chosen: File | undefined) => {
+    if (!chosen) {
+      setFile(null);
+      return;
+    }
+    if (chosen.size > MAX_FILE_BYTES || !ACCEPTED_FILES.includes(chosen.type)) {
+      setFile(null);
+      setErrors((e) => ({ ...e, attachment: text.uploadError }));
+      if (fileInput.current) fileInput.current.value = "";
+      return;
+    }
+    setFile(chosen);
+    setErrors((e) => {
+      const next = { ...e };
+      delete next.attachment;
+      return next;
+    });
+  };
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (busy.current) return;
+    if (type === "trade" && step < 3) {
+      go(step + 1);
+      return;
+    }
+    const found = validate(values);
+    if (type === "trade" && !file) found.attachment = text.uploadRequired;
+    if (Object.keys(found).length) {
+      setTouched((previous) => new Set([...previous, ...Object.keys(found)]));
+      setErrors(found);
+      setMessage(text.invalid);
+      if (type === "trade") {
+        const first = tradeFields.find((f) => found[f.name]);
+        if (first) setStep(first.step ?? 0);
+        else if (found.attachment) setStep(1);
+      }
+      focusError(found);
+      return;
+    }
+    if (Date.now() - started.current < 3000) {
+      setMessage(text.tooFast);
+      return;
+    }
+    busy.current = true;
+    setStatus("submitting");
+    setMessage("");
+    const body = new FormData();
+    body.set(
+      "payload",
+      JSON.stringify({
+        data: { ...values, type, consent },
+        startedAt: started.current,
+        honeypot,
+        requestId: requestId.current,
+      }),
+    );
+    if (file) body.set("attachment", file);
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        body,
+        signal: AbortSignal.timeout(25000),
+      });
+      const result: EnquiryResponse = await response.json();
+      if (!response.ok || !result.ok) {
+        setStatus("error");
+        setMessage(result.message || text.failure);
+        if (result.errors) setErrors(result.errors);
+        return;
+      }
+      setStatus("success");
+      setMessage(result.message);
+      setReference(result.reference ?? "");
+      if (type === "trade") {
+        try {
+          sessionStorage.removeItem("clinical-trade-draft");
+        } catch {
+          setStorageError(true);
+        }
+      }
+    } catch {
+      setStatus("error");
+      setMessage(text.networkError);
+    } finally {
+      busy.current = false;
+    }
+  };
+  const renderField = (field: FormField) => {
+    const error = errors[field.name];
+    const id = `${type}-${field.name}`;
+    const raw = values[field.name];
+    const value = typeof raw === "string" ? raw : "";
+    const common = {
+      id,
+      name: field.name,
+      "aria-invalid": !!error,
+      "aria-describedby": error ? `${id}-error` : undefined,
+      onBlur: () => blur(field.name),
+      autoComplete: field.autoComplete,
+    };
+    return (
+      <div
+        className={`form-field ${field.wide ? "wide" : ""}`}
+        key={field.name}
+        data-field={field.name}
+      >
+        {field.type === "categories" ? (
+          <fieldset>
+            <legend className="meta">{field.label}</legend>
+            <div className="category-checks">
+              {navigation.products.map((category) => (
+                <label key={category.slug}>
+                  <input
+                    type="checkbox"
+                    name={field.name}
+                    value={category.slug}
+                    checked={Array.isArray(raw) && raw.includes(category.slug)}
+                    onBlur={() => blur(field.name)}
+                    onChange={(e) => {
+                      const selected = Array.isArray(raw) ? raw : [];
+                      update(
+                        field.name,
+                        e.target.checked
+                          ? [...selected, category.slug]
+                          : selected.filter((s) => s !== category.slug),
+                      );
+                    }}
+                    aria-invalid={!!error}
+                    aria-describedby={error ? `${id}-error` : undefined}
+                  />
+                  <span>{category.name}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        ) : (
+          <>
+            <label className="meta" htmlFor={id}>
+              {field.label}
+              {field.optional && (
+                <span className="optional"> · {text.optional}</span>
+              )}
+            </label>
+            {field.type === "select" ? (
+              <select
+                {...common}
+                value={value}
+                onChange={(e) => update(field.name, e.target.value)}
+              >
+                <option value="">
+                  {field.name === "category" ? text.noCategory : text.select}
+                </option>
+                {field.name === "country"
+                  ? countryOptions.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.name}
+                      </option>
+                    ))
+                  : field.name === "category"
+                    ? navigation.products.map((category) => (
+                        <option value={category.slug} key={category.slug}>
+                          {category.name}
+                        </option>
+                      ))
+                    : field.options?.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+              </select>
+            ) : field.type === "textarea" ? (
+              <textarea
+                {...common}
+                value={value}
+                onChange={(e) => update(field.name, e.target.value)}
+                rows={5}
+                maxLength={5000}
+              />
+            ) : (
+              <input
+                {...common}
+                type={field.type}
+                inputMode={
+                  field.type === "tel"
+                    ? "tel"
+                    : field.type === "email"
+                      ? "email"
+                      : field.type === "number"
+                        ? "numeric"
+                        : field.type === "url"
+                          ? "url"
+                          : "text"
+                }
+                value={value}
+                onChange={(e) => update(field.name, e.target.value)}
+                maxLength={300}
+              />
+            )}
+          </>
+        )}
+        {error && (
+          <p className="field-error" id={`${id}-error`}>
+            <AlertCircle size={20} />
+            {error}
+          </p>
+        )}
+      </div>
+    );
+  };
+  if (status === "success")
+    return (
+      <div
+        className="form-success"
+        ref={successRef}
+        tabIndex={-1}
+        role="status"
+      >
+        <Check size={24} />
+        <h2 className="display">{text.success}</h2>
+        <p>{message}</p>
+        <p>{text.successDetail}</p>
+        {type === "catalogue" && <p>{text.catalogueSuccess}</p>}
+        <p className="meta">
+          {text.reference}: {reference}
+        </p>
+      </div>
+    );
+  return (
+    <form
+      className={`enquiry-form form-${type}`}
+      ref={form}
+      onSubmit={submit}
+      noValidate
+    >
+      <div className="form-notice">
+        <AlertCircle size={20} />
+        <p>{text.preview}</p>
+      </div>
+      {type === "trade" && (
+        <>
+          <Stepper steps={tradeSteps} active={step} onChange={go} />
+          <div className="draft-tools">
+            <p>{storageError ? text.storageUnavailable : text.saved}</p>
+            <button
+              type="button"
+              onClick={() => {
+                setValues({ categories: [] });
+                setStep(0);
+                setFile(null);
+                setConsent(false);
+                setErrors({});
+                setMessage("");
+                requestId.current = crypto.randomUUID();
+                try {
+                  sessionStorage.removeItem("clinical-trade-draft");
+                } catch {
+                  setStorageError(true);
+                }
+              }}
+            >
+              {text.clear}
+            </button>
+          </div>
+        </>
+      )}
+      <p className="form-required">{text.required}</p>
+      <div className="form-grid">
+        {fields
+          .filter((field) => type !== "trade" || field.step === step)
+          .map(renderField)}
+        {type === "trade" && step === 1 && (
+          <div className="form-field wide">
+            <label className="upload-label" htmlFor="licence-attachment">
+              <Upload size={24} />
+              <strong>{text.upload}</strong>
+              <span>{file?.name ?? text.uploadHelp}</span>
+            </label>
+            <input
+              id="licence-attachment"
+              ref={fileInput}
+              type="file"
+              name="attachment"
+              accept="application/pdf,image/jpeg,image/png"
+              onChange={(e) => chooseFile(e.target.files?.[0])}
+              aria-invalid={!!errors.attachment}
+              aria-describedby="attachment-help attachment-error"
+            />
+            <p id="attachment-help">{text.fileReselect}</p>
+            <p>{text.licenceHelp}</p>
+            <p id="attachment-error" className="field-error">
+              {errors.attachment && (
+                <>
+                  <AlertCircle size={20} />
+                  {errors.attachment}
+                </>
+              )}
+            </p>
+          </div>
+        )}
+      </div>
+      <div className="honeypot" aria-hidden="true">
+        <label htmlFor={`${type}-fax`}>{text.honey}</label>
+        <input
+          tabIndex={-1}
+          autoComplete="off"
+          id={`${type}-fax`}
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
+      {type === "trade" && step === 3 && (
+        <section className="review-summary">
+          <h2>{text.review}</h2>
+          {tradeSteps.map((section, i) => (
+            <div key={section.name}>
+              <div className="review-heading">
+                <h3>{section.name}</h3>
+                {i !== 3 && (
+                  <button
+                    type="button"
+                    onClick={() => setStep(i)}
+                    aria-label={`${text.edit} ${section.name}`}
+                  >
+                    {text.edit}
+                  </button>
+                )}
+              </div>
+              <dl>
+                {tradeFields
+                  .filter((f) => f.step === i)
+                  .map((f) => (
+                    <div key={f.name}>
+                      <dt>{f.label}</dt>
+                      <dd>
+                        {f.name === "country"
+                          ? countryName(String(values[f.name] ?? ""))
+                          : Array.isArray(values[f.name])
+                            ? (values[f.name] as string[])
+                                .map(
+                                  (slug) =>
+                                    navigation.products.find(
+                                      (p) => p.slug === slug,
+                                    )?.name ?? slug,
+                                )
+                                .join(", ")
+                            : values[f.name]}
+                      </dd>
+                    </div>
+                  ))}
+              </dl>
+            </div>
+          ))}
+        </section>
+      )}
+      {(type !== "trade" || step === 3) && (
+        <div className="consent">
+          <label>
+            <input
+              type="checkbox"
+              name="consent"
+              checked={consent}
+              onChange={(e) => {
+                setConsent(e.target.checked);
+                setErrors((previous) => {
+                  const next = { ...previous };
+                  delete next.consent;
+                  return next;
+                });
+              }}
+              aria-invalid={!!errors.consent}
+              aria-describedby={
+                errors.consent ? `${type}-consent-error` : undefined
+              }
+            />
+            <span>{text.consent}</span>
+          </label>
+          <Link href="/privacy" className="text-link">
+            {text.privacy}
+            <ArrowUpRight size={20} />
+          </Link>
+          {errors.consent && (
+            <p id={`${type}-consent-error`} className="field-error">
+              <AlertCircle size={20} />
+              {errors.consent}
+            </p>
+          )}
+        </div>
+      )}
+      <div aria-live="polite">
+        {message && (
+          <p className="form-message" role="alert">
+            <AlertCircle size={20} />
+            {message}
+          </p>
+        )}
+      </div>
+      <div className="form-actions">
+        {type === "trade" && step > 0 && (
+          <button
+            className="button"
+            type="button"
+            onClick={() => setStep(step - 1)}
+            disabled={status === "submitting"}
+          >
+            {text.back}
+          </button>
+        )}
+        {type === "trade" && step < 3 ? (
+          <button
+            className="button primary"
+            type="button"
+            onClick={() => go(step + 1)}
+          >
+            {text.next}
+            <ArrowRight size={20} />
+          </button>
+        ) : (
+          <button
+            className="button primary"
+            type="submit"
+            disabled={status === "submitting"}
+            aria-busy={status === "submitting"}
+          >
+            {status === "submitting"
+              ? text.submitting
+              : type === "trade"
+                ? text.tradeSubmit
+                : type === "catalogue"
+                  ? text.catalogueSubmit
+                  : text.submit}
+            {status === "submitting" ? (
+              <LoaderCircle size={20} className="submit-spinner" />
+            ) : (
+              <ArrowUpRight size={20} />
+            )}
+          </button>
+        )}
+      </div>
+      <p className="response-note">{text.contactWindow}</p>
+    </form>
+  );
 }

@@ -1,7 +1,113 @@
-import Link from 'next/link';
-import { ArrowDown, ArrowUpRight, FileText, ShieldCheck } from 'lucide-react';
-import { copy, trustItems } from '@/content/site';
-import { getCategories, getMarkets } from '@/content';
-import { CountUp, DotGrid, LogoLoop, Magnet, SplitText } from '@/components/reactbits';
-import { Reveal, RevealGroup } from '@/components/motion';
-export function Hero(){return <><section className="hero"><div className="container hero-grid"><div className="hero-left"><DotGrid/><RevealGroup><div className="eyebrow meta"><span className="tiny-cross" aria-hidden="true"/>{copy.eyebrow}</div><h1 className="display hero-title"><SplitText text={copy.heroTitle}/></h1><p className="hero-description">{copy.heroDescription}</p><div className="hero-actions"><Magnet><Link href="/trade-account" className="button primary">{copy.trade}<ArrowUpRight size={20}/></Link></Magnet><Link href="/catalogue" className="button">{copy.catalogue}<ArrowUpRight size={20}/></Link></div><p className="meta hero-rx"><ShieldCheck size={20} strokeWidth={1.5}/>{copy.rxNotice}</p></RevealGroup></div><Reveal className="hero-right" delay={0.12}><div className="profile-card"><div className="profile-top"><span className="meta">{copy.profileRef}</span><FileText size={20} strokeWidth={1.5}/></div><h2>{copy.profile}</h2><p className="profile-intro">{copy.profileNote}</p><div className="profile-numbers"><div><span className="profile-number"><CountUp to={getCategories().length}/><span className="number-mark">/</span></span><span className="meta">{copy.categoriesLabel}</span></div><div><span className="profile-number"><CountUp to={getMarkets().length}/></span><span className="meta">{copy.regionsLabel}</span></div></div><dl className="profile-details"><div><dt>{copy.modelLabel}</dt><dd>{copy.modelValue}</dd></div><div><dt>{copy.documentationLabel}</dt><dd>{copy.documentationValue}</dd></div><div><dt>{copy.credentialsLabel}</dt><dd className="status-value"><span/>{copy.credentialsValue}</dd></div></dl><div className="profile-foot"><span className="meta">{copy.location}</span><ArrowUpRight size={20}/></div></div><p className="profile-caption meta">{copy.revision}</p></Reveal></div><div className="container hero-bottom"><span className="meta">{copy.preview}</span><a href="#portfolio" aria-label={copy.allProducts}><ArrowDown size={20}/></a></div></section><div className="trust-band"><div className="container"><div className="trust-label"><ShieldCheck size={20} strokeWidth={1.5}/><span className="meta">{copy.compliance}</span></div><LogoLoop items={trustItems}/></div></div></>;}
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, FileText, ShieldCheck } from "lucide-react";
+import { copy, trustItems } from "@/content/site";
+import { getCategories, getMarkets } from "@/content";
+import {
+  CountUp,
+  DotGrid,
+  LogoLoop,
+  Magnet,
+  SplitText,
+} from "@/components/reactbits/basic";
+import { Reveal, RevealGroup } from "@/components/motion";
+export function Hero() {
+  return (
+    <>
+      <section className="hero">
+        <div className="container hero-grid">
+          <div className="hero-left">
+            <DotGrid />
+            <RevealGroup>
+              <div className="eyebrow meta">
+                <span className="tiny-cross" aria-hidden="true" />
+                {copy.eyebrow}
+              </div>
+              <h1 className="display hero-title">
+                <SplitText text={copy.heroTitle} />
+              </h1>
+              <p className="hero-description">{copy.heroDescription}</p>
+              <div className="hero-actions">
+                <Magnet>
+                  <Link href="/trade-account" className="button primary">
+                    {copy.trade}
+                    <ArrowUpRight size={20} />
+                  </Link>
+                </Magnet>
+                <Link href="/catalogue" className="button">
+                  {copy.catalogue}
+                  <ArrowUpRight size={20} />
+                </Link>
+              </div>
+              <p className="meta hero-rx">
+                <ShieldCheck size={20} strokeWidth={1.5} />
+                {copy.rxNotice}
+              </p>
+            </RevealGroup>
+          </div>
+          <Reveal className="hero-right" delay={0.12}>
+            <div className="profile-card">
+              <div className="profile-top">
+                <span className="meta">{copy.profileRef}</span>
+                <FileText size={20} strokeWidth={1.5} />
+              </div>
+              <h2>{copy.profile}</h2>
+              <p className="profile-intro">{copy.profileNote}</p>
+              <div className="profile-numbers">
+                <div>
+                  <span className="profile-number">
+                    <CountUp to={getCategories().length} />
+                    <span className="number-mark">/</span>
+                  </span>
+                  <span className="meta">{copy.categoriesLabel}</span>
+                </div>
+                <div>
+                  <span className="profile-number">
+                    <CountUp to={getMarkets().length} />
+                  </span>
+                  <span className="meta">{copy.regionsLabel}</span>
+                </div>
+              </div>
+              <dl className="profile-details">
+                <div>
+                  <dt>{copy.modelLabel}</dt>
+                  <dd>{copy.modelValue}</dd>
+                </div>
+                <div>
+                  <dt>{copy.documentationLabel}</dt>
+                  <dd>{copy.documentationValue}</dd>
+                </div>
+                <div>
+                  <dt>{copy.credentialsLabel}</dt>
+                  <dd className="status-value">
+                    <span />
+                    {copy.credentialsValue}
+                  </dd>
+                </div>
+              </dl>
+              <div className="profile-foot">
+                <span className="meta">{copy.location}</span>
+                <ArrowUpRight size={20} />
+              </div>
+            </div>
+            <p className="profile-caption meta">{copy.revision}</p>
+          </Reveal>
+        </div>
+        <div className="container hero-bottom">
+          <span className="meta">{copy.preview}</span>
+          <a href="#portfolio" aria-label={copy.allProducts}>
+            <ArrowDown size={20} />
+          </a>
+        </div>
+      </section>
+      <div className="trust-band">
+        <div className="container">
+          <div className="trust-label">
+            <ShieldCheck size={20} strokeWidth={1.5} />
+            <span className="meta">{copy.compliance}</span>
+          </div>
+          <LogoLoop items={trustItems} />
+        </div>
+      </div>
+    </>
+  );
+}
