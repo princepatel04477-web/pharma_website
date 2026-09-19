@@ -1,0 +1,5 @@
+import countries from 'i18n-iso-countries';
+import en from 'i18n-iso-countries/langs/en.json';
+countries.registerLocale(en);
+export const countryOptions=Object.entries(countries.getNames('en',{select:'official'})).map(([code,name])=>({code,name})).sort((a,b)=>a.name.localeCompare(b.name));
+export const countryName=(code:string)=>countryOptions.find(country=>country.code===code)?.name??code;

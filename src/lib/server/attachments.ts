@@ -1,0 +1,2 @@
+import { ACCEPTED_FILES,MAX_FILE_BYTES } from '@/lib/enquiry-schema';
+export async function validAttachment(file:File):Promise<boolean>{if(file.size===0||file.size>MAX_FILE_BYTES||!ACCEPTED_FILES.includes(file.type))return false;const bytes=new Uint8Array(await file.slice(0,8).arrayBuffer());if(file.type==='application/pdf')return String.fromCharCode(...bytes.slice(0,5))==='%PDF-';if(file.type==='image/jpeg')return bytes[0]===255&&bytes[1]===216&&bytes[2]===255;return [137,80,78,71,13,10,26,10].every((byte,i)=>bytes[i]===byte);}

@@ -1,0 +1,9 @@
+import { readFile,readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+export const disclaimer="we do not represent that any product is registered in a destination market; registration is supported, market-specific, and the importer's responsibility.";
+const forbidden=/approved in|registered in|\bcures\b|\bguaranteed\b|best in|FDA approved|#1/gi;
+export interface Violation {file:string;line:number;reason:string}
+export function inspectSource(content:string,file:string,release:boolean):Violation[]{const results:Violation[]=[];content.split('\n').forEach((line,index)=>{const claimText=line.replace(disclaimer,'');for(const match of claimText.matchAll(forbidden))results.push({file,line:index+1,reason:`Forbidden claim pattern: ${match[0]}`});if(release){for(const token of new Set(line.match(/TODO_[A-Z0-9_]+/g)??[]))results.push({file,line:index+1,reason:`Unverified token: ${token}`});if(/\/\/\s*VERIFY/.test(line))results.push({file,line:index+1,reason:'Unresolved VERIFY comment'});}});return results;}
+export function inspectRendered(content:string,file:string):Violation[]{return [...new Set(content.match(/TODO_[A-Z0-9_]+/g)??[])].map(token=>({file,line:1,reason:`Rendered unverified token: ${token}`}));}
+export async function filesWithin(dir:string):Promise<string[]>{const entries=await readdir(dir,{withFileTypes:true});return (await Promise.all(entries.map(entry=>entry.isDirectory()?filesWithin(join(dir,entry.name)):Promise.resolve([join(dir,entry.name)])))).flat();}
+export async function scanSources(root:string,release:boolean):Promise<Violation[]>{const files=(await Promise.all(['src/config','src/content'].map(path=>filesWithin(join(root,path))))).flat().filter(file=>/\.tsx?$/.test(file));return (await Promise.all(files.map(async file=>inspectSource(await readFile(file,'utf8'),file,release)))).flat();}

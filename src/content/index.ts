@@ -1,0 +1,11 @@
+import { categories } from './categories';
+import { services } from './services';
+import { certifications } from './certifications';
+import { markets } from './markets';
+import { faqs } from './faqs';
+export const getCategories=()=>categories;
+export const getCategory=(slug:string)=>categories.find(category=>category.slug===slug);
+export const getServices=()=>services;
+export const getCertifications=()=>certifications;
+export const getMarkets=()=>markets;
+export const getFAQs=()=>faqs;
